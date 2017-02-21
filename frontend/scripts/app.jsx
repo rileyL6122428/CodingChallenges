@@ -4,7 +4,7 @@ import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router'
 
 import HelloWorld from './components/HelloWorld.jsx';
 
-class App extends React.Component{
+class App extends React.Component {
   constructor(props) { super(props); }
   render () { return<div>{ this.props.children }</div>; }
 };
@@ -12,6 +12,7 @@ class App extends React.Component{
 let AppRoutes = (
   <Router history={hashHistory} >
     <Route path='/' component={App} >
+      <IndexRoute component={HelloWorld} />
       <Route path='hello-world' component={HelloWorld} />
     </Route>
   </Router>
