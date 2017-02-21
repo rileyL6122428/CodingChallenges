@@ -1,6 +1,6 @@
 package com.manifest.server.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -60,7 +60,7 @@ public class CodingChallenge {
 		return dateCreated;
 	}
 
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
+	public void setDateCreated(Date date) {
+		this.dateCreated = date;
 	}
 }
