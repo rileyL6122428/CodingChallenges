@@ -1,24 +1,15 @@
-//REACT
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router'
 
-// ROUTER
-var ReactRouter = require('react-router');
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var IndexRoute = ReactRouter.IndexRoute;
-var hashHistory = ReactRouter.hashHistory;
-
-//COMPONENTS
 import HelloWorld from './components/HelloWorld.jsx';
 
-var App = React.createClass({
-  render: function (){
-    return(<div>{ this.props.children }</div>);
-  }
-});
+class App extends React.Component{
+  constructor(props) { super(props); }
+  render () { return<div>{ this.props.children }</div>; }
+};
 
-var Router = (
+let AppRoutes = (
   <Router history={hashHistory} >
     <Route path='/' component={App} >
       <Route path='hello-world' component={HelloWorld} />
@@ -27,6 +18,6 @@ var Router = (
 );
 
 document.addEventListener('DOMContentLoaded', () => {
-  var root = document.getElementById('content');
-  ReactDOM.render(Router, root);
+  let root = document.getElementById('content');
+  ReactDOM.render(AppRoutes, root);
 });
