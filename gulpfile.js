@@ -25,9 +25,9 @@ function logError(error) {
 }
 
 gulp.task('scripts', function() {
-    var bundler = watchify(browserify('./frontend/scripts/app.jsx', {
+    var bundler = watchify(browserify('./scripts/src/app.jsx', {
         debug: true,
-        paths: ['./node_modules', './frontend/scripts'],
+        paths: ['./node_modules', './scripts/src'],
     }))
         .transform(babelify, {
             presets: ['es2015', 'react'],
@@ -50,7 +50,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('watch', ['scripts'], function() {
-    gulp.watch('./frontend/scripts/*', ['scripts']);
+    gulp.watch('./scripts/src/*', ['scripts/src']);
 });
 
 gulp.task('test', function(done) {
