@@ -1,2 +1,11 @@
-INSERT INTO coding_challenge VALUES (1, 'example description 1', 'hard', 'example name 1')
-INSERT INTO coding_challenge VALUES (2, 'example description 2', 'hard', 'example name 2')
+INSERT INTO coding_challenge (id, date_created, name, difficulty, description) VALUES (1, '2001-01-01', 'Example Name 1', 'hard', 'Example Description 1')
+INSERT INTO coding_challenge (id, date_created, name, difficulty, description) VALUES (2, '2002-01-01', 'Example Name 2', 'hard', 'Example Description 2')
+INSERT INTO coding_challenge (id, date_created, name, difficulty, description) VALUES (3, '2003-01-01', 'Example Name 3', 'hard', 'Example Description 3')
+INSERT INTO coding_challenge (id, date_created, name, difficulty, description) VALUES (4, '2004-01-01', 'Example Name 4', 'medium', 'Example Description 4')
+INSERT INTO coding_challenge (id, date_created, name, difficulty, description) VALUES (5, '2005-01-01', 'Example Name 5', 'medium', 'Example Description 5')
+INSERT INTO coding_challenge (id, date_created, name, difficulty, description) VALUES (6, '2001-01-01', 'Example Name 6', 'medium', 'Example Description 6')
+INSERT INTO coding_challenge (id, date_created, name, difficulty, description) VALUES (7, '2001-01-01', 'Example Name 7', 'easy', 'Example Description 7')
+INSERT INTO coding_challenge (id, date_created, name, difficulty, description) VALUES (8, '2001-01-01', 'Example Name 8', 'easy', 'Example Description 8')
+INSERT INTO coding_challenge (id, date_created, name, difficulty, description) VALUES (9, '2001-01-01', 'Example Name 9', 'easy', 'Example Description 9')
+INSERT INTO coding_challenge (id, date_created, name, difficulty, description) VALUES (10, '2001-01-01', 'Example Name 10', 'easy', 'Example Description 10')
+

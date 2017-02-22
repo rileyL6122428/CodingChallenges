@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.data.annotation.CreatedDate;
+
 @Entity
 public class CodingChallenge {
 
@@ -19,6 +21,9 @@ public class CodingChallenge {
 	private String name; 
 	private String description;
 	private String difficulty;
+	
+	@CreatedDate
+	private Date dateCreated;
 	
 
 	public Long getId() {
@@ -51,5 +56,13 @@ public class CodingChallenge {
 
 	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
+	}
+
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 }
