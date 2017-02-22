@@ -8,9 +8,9 @@ export default class CodingChallengeList extends React.Component {
   render() {
     return (
       <ul>
-        <li>This is a sample list item</li>
-        <li>This is a sample list item</li>
-        <li>This is a sample list item</li>
+        {this.props.challenges.map((challenge, idx) => {
+          return <li key={idx}>Name: { challenge.name }</li>;
+        })}
       </ul>
     );
   }

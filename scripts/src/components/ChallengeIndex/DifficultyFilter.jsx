@@ -9,7 +9,7 @@ export default class DifficultyFilter extends React.Component {
     return (
       <div className="difficulty-filters">
         <label htmlFor="easy-checkbox">Easy</label>
-        <input type="checkbox" id="easy-checkbox"/>
+        <input type="checkbox" id="easy-checkbox" />
 
         <label htmlFor="medium-checkbox">Medium</label>
         <input type="checkbox" id="medium-checkbox"/>
