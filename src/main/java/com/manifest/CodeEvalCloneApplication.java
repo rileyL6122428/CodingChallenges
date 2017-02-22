@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EntityScan(basePackages = { "com.manifest.server.model", "com.manifest.server.controller" })
+@EntityScan(basePackages = { "com.manifest.server.model", "com.manifest.server.controller", "com.manifest.server.services" })
 @EnableJpaRepositories(basePackages = { "com.manifest.server.repository" })
 public class CodeEvalCloneApplication {
 	public static void main(String[] args) {
