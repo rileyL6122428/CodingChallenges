@@ -24,7 +24,6 @@ public class CodingChallenge {
 	
 	@CreatedDate
 	private Date dateCreated;
-	
 
 	public Long getId() {
 		return id;
