@@ -1,7 +1,7 @@
-import CodingChallengeReducer from './codingCHallenge.reducer.js';
+import { CodingChallengeReducer } from './codingChallenge.reducer.js';
 
 import { combineReducers } from 'redux';
 
-export const RootReducer = combineReducers({
+export var RootReducer = combineReducers({
   codingChallenges: CodingChallengeReducer
 });

@@ -1,7 +1,10 @@
+import $ from 'jquery';
+import Store from '../../redux/store.js';
+import { addChallenges } from '../../redux/actions/codingChallenge.actions.js';
+
 import DifficultyFilter from './DifficultyFilter.jsx';
 import NameFilter from './NameFilter.jsx'
 import CodingChallengeList from './CodingChallengeList.jsx';
-import $ from 'jquery';
 import React from 'react';
 
 export default class ChallengeIndex extends React.Component {
@@ -12,11 +15,19 @@ export default class ChallengeIndex extends React.Component {
 
   componentDidMount() {
     let self = this;
+
+    Store.subscribe(function() {
+      self.setState({challenges: Object.values(Store.getState().codingChallenges) })
+    })
+
     $.ajax({
       url: "./api/coding-challenges",
       type: "GET",
       success: (response) => {
-        self.setState({ challenges: response });
+        // self.setState({ challenges: response });
+        let test = addChallenges;
+        debugger
+        Store.dispatch(addChallenges(response));
       },
     });
   }
