@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router'
 
 import HelloWorld from './components/HelloWorld.jsx';
+import ChallengeIndex from './components/ChallengeIndex/_ChallengeIndex.jsx';
 
 class App extends React.Component {
   constructor(props) { super(props); }
@@ -12,8 +13,9 @@ class App extends React.Component {
 let AppRoutes = (
   <Router history={hashHistory} >
     <Route path='/' component={App} >
-      <IndexRoute component={HelloWorld} />
+      <IndexRoute component={ChallengeIndex} />
       <Route path='hello-world' component={HelloWorld} />
+      <Route path='coding-challenges' component={ChallengeIndex} />
     </Route>
   </Router>
 );
