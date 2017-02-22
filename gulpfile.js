@@ -14,6 +14,9 @@ gulp.task('default', ['watch-compile-scripts']);
 gulp.task('s', ['compile-scripts']);
 gulp.task('ws', ['watch-compile-scripts']);
 
+gulp.task('rt', ['run-tests']);
+gulp.task('dt', ['debug-tests']);
+
 gulp.task('compile-scripts', function () {
   var bundler = browserifyApp()
     .transform(babelify, { presets: ['es2015', 'react'] })
@@ -26,18 +29,17 @@ gulp.task('watch-compile-scripts', ['compile-scripts'], function () {
   gulp.watch('scripts/src/**/*', ['compile-scripts']);
 });
 
-gulp.task('test', function(done) {
+gulp.task('run-tests', function(done) {
     new Karma({
         configFile: path.join(__dirname, 'karma.conf.js'),
         singleRun: true,
         autoWatch: false,
         browsers: ['PhantomJS'],
-        //browsers: ['Chrome'],
         reporters: ['dots'],
     }, done).start();
 });
 
-gulp.task('debug-test', function(done) {
+gulp.task('debug-tests', function(done) {
     new Karma({
         configFile: path.join(__dirname, 'karma.conf.js'),
         singleRun: false,
@@ -70,11 +72,11 @@ function browserifyApp() {
 
 function bundle(bundler) {
   return bundler.bundle()
-  .on('error', logError)
+    .on('error', logError)
 
-  .pipe(source('bundle.js'))
-  .pipe(buffer())
-  .pipe(sourcemaps.init({loadMaps: true}))
-  .pipe(sourcemaps.write('./'))
-  .pipe(gulp.dest('./src/main/webapp'));
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./src/main/webapp'));
 }
