@@ -10,12 +10,13 @@ var watchify = require('watchify');
 var path = require('path');
 var Karma = require('karma').Server;
 
+
 gulp.task('default', ['watch-compile-scripts']);
 gulp.task('s', ['compile-scripts']);
 gulp.task('ws', ['watch-compile-scripts']);
-
 gulp.task('rt', ['run-tests']);
 gulp.task('dt', ['debug-tests']);
+
 
 gulp.task('compile-scripts', function () {
   var bundler = browserifyApp()
@@ -28,6 +29,7 @@ gulp.task('compile-scripts', function () {
 gulp.task('watch-compile-scripts', ['compile-scripts'], function () {
   gulp.watch('scripts/src/**/*', ['compile-scripts']);
 });
+
 
 gulp.task('run-tests', function(done) {
     new Karma({
@@ -48,6 +50,7 @@ gulp.task('debug-tests', function(done) {
         reporters: ['dots'],
     }, done).start();
 });
+
 
 function logError(error) {
     if (error._babel) {
