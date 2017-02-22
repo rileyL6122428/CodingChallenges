@@ -10,47 +10,20 @@ var watchify = require('watchify');
 var path = require('path');
 var Karma = require('karma').Server;
 
-function logError(error) {
-    if (error._babel) {
-        gutil.log(
-            gutil.colors.red(error.name)
-            + ': ' + gutil.colors.yellow(error.message)
-            + '\n' + error.codeFrame
-        );
-    } else {
-        gutil.log(gutil.colors.red(error.message));
-    }
+gulp.task('default', ['watch-compile-scripts']);
+gulp.task('s', ['compile-scripts']);
+gulp.task('ws', ['watch-compile-scripts']);
 
-    this.emit('end');
-}
+gulp.task('compile-scripts', function () {
+  var bundler = browserifyApp()
+    .transform(babelify, { presets: ['es2015', 'react'] })
+    .transform(partialify);
 
-gulp.task('scripts', function() {
-    var bundler = watchify(browserify('./scripts/src/app.jsx', {
-        debug: true,
-        paths: ['./node_modules', './scripts/src'],
-    }))
-        .transform(babelify, {
-            presets: ['es2015', 'react'],
-        })
-        .transform(partialify);
-
-    function rebundle() {
-        bundler.bundle()
-            .on('error', logError)
-            .pipe(source('bundle.js'))
-            .pipe(buffer())
-            .pipe(sourcemaps.init({loadMaps: true}))
-            .pipe(sourcemaps.write('./'))
-            .pipe(gulp.dest('./src/main/webapp'));
-    }
-
-    bundler.on('update', rebundle);
-
-    return rebundle();
+  bundle(bundler);
 });
 
-gulp.task('watch', ['scripts'], function() {
-    gulp.watch('./scripts/src/*', ['scripts/src']);
+gulp.task('watch-compile-scripts', ['compile-scripts'], function () {
+  gulp.watch('scripts/src/**/*', ['compile-scripts']);
 });
 
 gulp.task('test', function(done) {
@@ -74,4 +47,34 @@ gulp.task('debug-test', function(done) {
     }, done).start();
 });
 
-gulp.task('default', ['watch']);
+function logError(error) {
+    if (error._babel) {
+        gutil.log(
+            gutil.colors.red(error.name)
+            + ': ' + gutil.colors.yellow(error.message)
+            + '\n' + error.codeFrame
+        );
+    } else {
+        gutil.log(gutil.colors.red(error.message));
+    }
+
+    this.emit('end');
+}
+
+function browserifyApp() {
+  return browserify('./scripts/src/app.jsx', {
+    debug: true,
+    paths: ['./node_modules', './scripts/src'],
+  })
+}
+
+function bundle(bundler) {
+  return bundler.bundle()
+  .on('error', logError)
+
+  .pipe(source('bundle.js'))
+  .pipe(buffer())
+  .pipe(sourcemaps.init({loadMaps: true}))
+  .pipe(sourcemaps.write('./'))
+  .pipe(gulp.dest('./src/main/webapp'));
+}
