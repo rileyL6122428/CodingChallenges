@@ -31,7 +31,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.manifest.server.model.CodingChallenge;
-import com.manifest.server.service.CodingChallengeService;
+import com.manifest.server.repository.CodingChallengeRepository;
 
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
@@ -42,16 +42,16 @@ public class CodingChallengeControllerTest {
     private WebApplicationContext wac;
 	private HttpServletResponse responseMock;
 	
-    private CodingChallengeService challengeServiceMock;
+    private CodingChallengeRepository challengeRepositoryMock;
     private CodingChallengeRestController challengeRestController;
     
     @Before
     public void setup() {
     	responseMock = Mockito.mock(HttpServletResponse.class);
-    	challengeServiceMock = Mockito.mock(CodingChallengeService.class);
+    	challengeRepositoryMock = Mockito.mock(CodingChallengeRepository.class);
     	
     	challengeRestController = new CodingChallengeRestController();
-    	challengeRestController.setCodingChallengeService(challengeServiceMock);
+    	challengeRestController.setCodingChallengeRepository(challengeRepositoryMock);
     }
     
     @Test
@@ -61,22 +61,20 @@ public class CodingChallengeControllerTest {
     	challenge1.setDescription("EXAMPLE DESCRIPTION 1");
     	challenge1.setDifficulty("EXAMPLE DIFFICULTY 1");
     	challenge1.setId((long)1);
-    	challenge1.setDateCreated(new Date(1));
     	
     	CodingChallenge challenge2 = new CodingChallenge();
     	challenge2.setName("EXAMPLE NAME 2");
     	challenge2.setDescription("EXAMPLE DESCRIPTION 2");
     	challenge2.setDifficulty("EXAMPLE DIFFICULTY 2");
     	challenge2.setId((long)2);
-    	challenge2.setDateCreated(new Date(2));
     	
-    	when(challengeServiceMock.all()).thenReturn(Arrays.asList(challenge1, challenge2));
-    	List<CodingChallenge> sentChallenges = challengeRestController.index(responseMock);
+    	when(challengeRepositoryMock.findAll()).thenReturn(Arrays.asList(challenge1, challenge2));
+    	Iterable<CodingChallenge> sentChallenges = challengeRestController.index(responseMock);
     	
     	
     	verify(responseMock).setStatus(HttpServletResponse.SC_OK);;
-    	verify(challengeServiceMock, times(1)).all();
-        verifyNoMoreInteractions(challengeServiceMock);
+    	verify(challengeRepositoryMock, times(1)).findAll();
+        verifyNoMoreInteractions(challengeRepositoryMock);
     }
 }
 

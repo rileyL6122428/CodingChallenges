@@ -20,9 +20,6 @@ public class CodingChallenge {
 	private String description;
 	private String difficulty;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "date_created", insertable = true, updatable = false)
-	private Date dateCreated;
 
 	public Long getId() {
 		return id;
@@ -54,13 +51,5 @@ public class CodingChallenge {
 
 	public void setDifficulty(String difficulty) {
 		this.difficulty = difficulty;
-	}
-
-	public Date getDateCreated() {
-		return dateCreated;
-	}
-
-	public void setDateCreated(Date date) {
-		this.dateCreated = date;
 	}
 }

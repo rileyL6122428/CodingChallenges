@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.manifest.server.model.CodingChallenge;
 
 @Service
-public class CodingChallengeService {
+public class CodingChallengeRepository {
 	public List<CodingChallenge> all() {
 		return null;
 	}

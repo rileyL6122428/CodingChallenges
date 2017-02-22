@@ -1,35 +1,47 @@
 package com.manifest.server.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.manifest.server.model.CodingChallenge;
-import com.manifest.server.service.CodingChallengeService;
+import com.manifest.server.repository.CodingChallengeRepository;
 
 @RestController
 public class CodingChallengeRestController {
 	@Autowired
-	private CodingChallengeService codingChallengeService;
+	private CodingChallengeRepository codingChallengeService;
+	
+	@Autowired
+	private CodingChallengeRepository codingChallengeRepository;
 
-	public List<CodingChallenge> index(HttpServletResponse response) {
-		List<CodingChallenge> challenges = getCodingChallengeService().all();
+	@GetMapping(path = "/api/coding-challenges", produces = "application/json")
+	public Iterable<CodingChallenge> index(HttpServletResponse response) {
+		Iterable<CodingChallenge> challenges = codingChallengeRepository.findAll();
 		
 		response.setStatus(HttpServletResponse.SC_OK);
 		return challenges;
 	}
-
 	
 	
-	public CodingChallengeService getCodingChallengeService() {
+	public CodingChallengeRepository getCodingChallengeService() {
 		return codingChallengeService;
 	}
 
-	public void setCodingChallengeService(CodingChallengeService codingChallengeService) {
+	public void setCodingChallengeService(CodingChallengeRepository codingChallengeService) {
 		this.codingChallengeService = codingChallengeService;
+	}
+
+
+	public CodingChallengeRepository getCodingChallengeRepository() {
+		return codingChallengeRepository;
+	}
+
+
+	public void setCodingChallengeRepository(CodingChallengeRepository challengeRepository) {
+		this.codingChallengeRepository = challengeRepository;
 	}
 	
 	
