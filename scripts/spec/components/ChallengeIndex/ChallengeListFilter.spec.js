@@ -71,16 +71,32 @@ describe("ChallengeListFilter", () => {
     });
 
     describe("name filter", () => {
-      xit("returns a list of challenges with names that partially match all words in the input", () => {
+      it("returns a list of challenges with names that partially match all words in the input", () => {
         listFilter.setNameFilter("STR")
+
+        let filteredList = listFilter.filter(challenges);
+
+        expect(filteredList.length).toEqual(2);
+        expect(filteredList[0]).toBe(reverseString);
+        expect(filteredList[1]).toBe(stringContains);
       });
 
-      xit("returns a list of filtered challenges where matching word order is irrelevant", () => {
+      it("returns a list of filtered challenges where matching word order is irrelevant", () => {
         listFilter.setNameFilter("contai str");
+
+        let filteredList = listFilter.filter(challenges);
+
+        expect(filteredList.length).toEqual(1);
+        expect(filteredList[0]).toBe(stringContains);
       });
 
-      xit("returns a list of challenges where the filtered list names is case insensitive", () => {
-        listFilter.setNameFilter("string")
+      it("returns a list of challenges where the filtered list names is case insensitive", () => {
+        listFilter.setNameFilter("regex");
+
+        let filteredList = listFilter.filter(challenges);
+
+        expect(filteredList.length).toEqual(1);
+        expect(filteredList[0]).toBe(regexStar);
       });
     });
   });
