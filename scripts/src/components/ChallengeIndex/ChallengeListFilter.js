@@ -2,10 +2,11 @@ export default class ChallengeListFilter {
 
   constructor() {
     this.difficultyFilters = ({ easy: false, medium: false, hard: false });
-    this.nameFilter = "";
+    this.nameFilterWords = [];
   }
 
   filter(challenges) {
+
     if(this._difficultyFilterUnset() && this._nameFilterUnset()) { return challenges; }
 
     let filteredChallenges = [];
@@ -26,7 +27,7 @@ export default class ChallengeListFilter {
   }
 
   _nameFilterUnset() {
-    return !this.nameFilter;
+    return this.nameFilterWords.length === 0;
   }
 
   _difficultyFilterMatches(challenge) {
@@ -40,7 +41,11 @@ export default class ChallengeListFilter {
   _nameFilterMatches(challenge) {
     if(this._nameFilterUnset()) { return true; }
 
-    
+    return this.nameFilterWords.every((filterWord) => {
+      return challenge.name.toLowerCase().split(/\s+/).some((nameWord) => {
+        return nameWord.match(new RegExp(filterWord));
+      });
+    });
   }
 
   toggleDifficultyFilter(difficulty) {
@@ -48,6 +53,9 @@ export default class ChallengeListFilter {
   }
 
   setNameFilter(name) {
-    this.nameFilter = name;
+    this.nameFilterWords = name
+                            .toLowerCase()
+                            .split(/\s+/)
+                            .filter((word) => { return word.length !== 0 });
   }
 }
