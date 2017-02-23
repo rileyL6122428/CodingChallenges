@@ -5,21 +5,13 @@ export default class ChallengeListFilter {
     this.nameFilter = "";
   }
 
-  toggleDifficultyFilter(difficulty) {
-    this.difficultyFilters[difficulty] = !this.difficultyFilters[difficulty];
-  }
-
-  setNameFilter(name) {
-    this.nameFilter = name;
-  }
-
   filter(challenges) {
-    if(this._difficultyFilterUnset()) { return challenges; }
+    if(this._difficultyFilterUnset() && this._nameFilterUnset()) { return challenges; }
 
     let filteredChallenges = [];
 
     challenges.forEach((challenge) => {
-      if(this._difficultyFilterMatches(challenge))
+      if(this._difficultyFilterMatches(challenge) && this._nameFilterMatches(challenge))
         filteredChallenges.push(challenge);
     });
 
@@ -33,7 +25,29 @@ export default class ChallengeListFilter {
     );
   }
 
+  _nameFilterUnset() {
+    return !this.nameFilter;
+  }
+
   _difficultyFilterMatches(challenge) {
-    return this.difficultyFilters[challenge.difficulty];
+    return (
+      this._difficultyFilterUnset() ||
+      this.difficultyFilters[challenge.difficulty]
+    );
+  }
+
+
+  _nameFilterMatches(challenge) {
+    if(this._nameFilterUnset()) { return true; }
+
+    
+  }
+
+  toggleDifficultyFilter(difficulty) {
+    this.difficultyFilters[difficulty] = !this.difficultyFilters[difficulty];
+  }
+
+  setNameFilter(name) {
+    this.nameFilter = name;
   }
 }
