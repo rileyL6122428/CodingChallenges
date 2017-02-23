@@ -7,12 +7,15 @@ import codingChallengeRequests from '../../backendApi/codingChallenges.js';
 import DifficultyFilter from './DifficultyFilter.jsx';
 import NameFilter from './NameFilter.jsx'
 import CodingChallengeList from './CodingChallengeList.jsx';
+
 import React from 'react';
+import ChallengeListFilter from './ChallengeListFilter.js';
 
 export default class ChallengeIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = { challenges: [] }
+    this.state.challengeListFilter = new ChallengeListFilter();
   }
 
   componentDidMount() {
@@ -38,12 +41,14 @@ export default class ChallengeIndex extends React.Component {
         <h1>Coding Challenges</h1>
 
         <div id="search-filters">
-          <DifficultyFilter />
-          <NameFilter />
+          <DifficultyFilter filter={ this.state.challengeListFilter } />
+          <NameFilter rerender={this.forceUpdate.bind(this)} filter={ this.state.challengeListFilter } />
         </div>
 
         <div id="coding-challenge-list">
-          <CodingChallengeList challenges={this.state.challenges}/>
+          <CodingChallengeList
+              challenges={ this.state.challenges }
+              filter={ this.state.challengeListFilter } />
         </div>
       </section>
     );
