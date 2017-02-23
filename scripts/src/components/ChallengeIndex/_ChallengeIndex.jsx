@@ -27,7 +27,7 @@ export default class ChallengeIndex extends React.Component {
   }
 
   _setCodingChallenges() {
-    let codingChallengeStore = Store.getState().codingChallenges
+    let codingChallengeStore = Store.getState().codingChallenges;
     let challenges = Object.values(codingChallengeStore);
     this.setState({ challenges });
   }
