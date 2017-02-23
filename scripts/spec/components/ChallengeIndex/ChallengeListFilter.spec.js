@@ -92,7 +92,7 @@ describe("ChallengeListFilter", () => {
 
       it("returns a list of challenges where the filtered list names is case insensitive", () => {
         listFilter.setNameFilter("regex");
-        debugger
+
         let filteredList = listFilter.filter(challenges);
 
         expect(filteredList.length).toEqual(1);
