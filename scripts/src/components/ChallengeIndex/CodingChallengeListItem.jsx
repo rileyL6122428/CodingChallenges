@@ -1,4 +1,5 @@
 import React from 'react';
+import DateUtils from '../../utils/DateUtils.js';
 
 export default class CodingChallengeListItem extends React.Component {
   constructor(props) {
@@ -6,13 +7,11 @@ export default class CodingChallengeListItem extends React.Component {
   }
 
   render() {
-    let dateCreated = new Date(this.props.challenge.dateCreated);
-    let dateStr = dateCreated.getMonth() + "/" + dateCreated.getDate() + "/" + dateCreated.getFullYear();
     return (
       <li>
         <div>Difficulty: { this.props.challenge.difficulty }</div>
         <div>Name: { this.props.challenge.name }</div>
-        <div>Date added: { dateStr }</div>
+        <div>Date added: { DateUtils.monthDayYear(this.props.challenge.dateCreated) }</div>
       </li>
     );
   }
