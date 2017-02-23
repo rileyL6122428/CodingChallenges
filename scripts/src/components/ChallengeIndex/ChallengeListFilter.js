@@ -2,10 +2,15 @@ export default class ChallengeListFilter {
 
   constructor() {
     this.difficultyFilters = ({ easy: false, medium: false, hard: false });
+    this.nameFilter = "";
   }
 
   toggleDifficultyFilter(difficulty) {
     this.difficultyFilters[difficulty] = !this.difficultyFilters[difficulty];
+  }
+
+  setNameFilter(name) {
+    this.nameFilter = name;
   }
 
   filter(challenges) {
@@ -14,7 +19,7 @@ export default class ChallengeListFilter {
     let filteredChallenges = [];
 
     challenges.forEach((challenge) => {
-      if(this._difficultyIsSelected(challenge))
+      if(this._difficultyFilterMatches(challenge))
         filteredChallenges.push(challenge);
     });
 
@@ -28,7 +33,7 @@ export default class ChallengeListFilter {
     );
   }
 
-  _difficultyIsSelected(challenge) {
+  _difficultyFilterMatches(challenge) {
     return this.difficultyFilters[challenge.difficulty];
   }
 }
