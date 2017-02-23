@@ -2,6 +2,8 @@ import $ from 'jquery';
 import Store from '../../redux/store.js';
 import { addChallenges } from '../../redux/actions/codingChallenge.actions.js';
 
+import codingChallengeRequests from '../../backendApi/codingChallenges.js';
+
 import DifficultyFilter from './DifficultyFilter.jsx';
 import NameFilter from './NameFilter.jsx'
 import CodingChallengeList from './CodingChallengeList.jsx';
@@ -14,22 +16,20 @@ export default class ChallengeIndex extends React.Component {
   }
 
   componentDidMount() {
-    let self = this;
+    let subscriptionCB = this._setCodingChallenges.bind(this);
+    this.unsubscribeFromStore = Store.subscribe(subscriptionCB);
 
-    Store.subscribe(function() {
-      self.setState({challenges: Object.values(Store.getState().codingChallenges) })
-    })
+    codingChallengeRequests.getCodingChallenges();
+  }
 
-    $.ajax({
-      url: "./api/coding-challenges",
-      type: "GET",
-      success: (response) => {
-        // self.setState({ challenges: response });
-        let test = addChallenges;
-        debugger
-        Store.dispatch(addChallenges(response));
-      },
-    });
+  componentWillUnmount() {
+    this.unsubscribeFromStore();
+  }
+
+  _setCodingChallenges() {
+    let codingChallengeStore = Store.getState().codingChallenges
+    let challenges = Object.values(codingChallengeStore);
+    this.setState({ challenges });
   }
 
   render() {
