@@ -6,7 +6,6 @@ export default class ChallengeListFilter {
   }
 
   filter(challenges) {
-
     if(this._difficultyFilterUnset() && this._nameFilterUnset()) { return challenges; }
 
     let filteredChallenges = [];

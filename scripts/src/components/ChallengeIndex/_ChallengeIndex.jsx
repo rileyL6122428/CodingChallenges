@@ -41,7 +41,7 @@ export default class ChallengeIndex extends React.Component {
         <h1>Coding Challenges</h1>
 
         <div id="search-filters">
-          <DifficultyFilter filter={ this.state.challengeListFilter } />
+          <DifficultyFilter rerender={this.forceUpdate.bind(this)} filter={ this.state.challengeListFilter } />
           <NameFilter rerender={this.forceUpdate.bind(this)} filter={ this.state.challengeListFilter } />
         </div>
 
