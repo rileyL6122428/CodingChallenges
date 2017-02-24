@@ -3,13 +3,13 @@ import Store from '../../redux/store.js';
 import { addChallenges } from '../../redux/actions/codingChallenge.actions.js';
 
 import codingChallengeRequests from '../../backendApi/codingChallenges.js';
+import ChallengeListFilter from './classes/ChallengeListFilter.js';
 
 import DifficultyFilter from './DifficultyFilter.jsx';
 import NameFilter from './NameFilter.jsx'
 import CodingChallengeList from './CodingChallengeList.jsx';
 
 import React from 'react';
-import ChallengeListFilter from './classes/ChallengeListFilter.js';
 
 export default class ChallengeIndex extends React.Component {
   constructor(props) {
