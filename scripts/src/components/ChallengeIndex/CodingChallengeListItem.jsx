@@ -8,10 +8,18 @@ export default class CodingChallengeListItem extends React.Component {
 
   render() {
     return (
-      <li>
-        <div>Difficulty: { this.props.challenge.difficulty }</div>
-        <div>Name: { this.props.challenge.name }</div>
-        <div>Date added: { DateUtils.monthDayYear(this.props.challenge.dateCreated) }</div>
+      <li className="coding-challenge">
+        <div className="challenge-difficulty">
+          { this.props.challenge.difficulty }
+        </div>
+
+        <div className="challenge-name">
+          { this.props.challenge.name }
+        </div>
+
+        <div className="challenge-date-created">
+          { DateUtils.monthDayYear(this.props.challenge.dateCreated) }
+        </div>
       </li>
     );
   }

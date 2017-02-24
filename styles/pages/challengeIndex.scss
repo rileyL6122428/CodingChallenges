@@ -10,6 +10,7 @@ section#coding-challenges {
   div#search-filters {
     display: flex;
     justify-content: center;
+    margin-top: 15px;
   }
 
   div#difficulty-filters {
@@ -40,5 +41,18 @@ section#coding-challenges {
     width: 300px;
     margin-left: 35px;
     font-size: 22px;
+  }
+
+  li.coding-challenge {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  li.coding-challenge > div.challenge-difficulty {
+    width: 65px;
+  }
+
+  li.coding-challenge > div.challenge-name {
+    width: 200px;
   }
 }
