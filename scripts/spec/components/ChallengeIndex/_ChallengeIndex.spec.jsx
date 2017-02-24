@@ -3,6 +3,7 @@ import ReactTestUtils from 'react-addons-test-utils';
 
 import Store from '../../../src/redux/store.js';
 import ChallengeListFilter from '../../../src/components/ChallengeIndex/classes/ChallengeListFilter.js';
+import codingChallengeRequests from '../../../src/backendApi/codingChallenges.js';
 import ChallengeIndex from '../../../src/components/ChallengeIndex/_ChallengeIndex.jsx';
 
 describe("Challenge Index", () => {
@@ -43,21 +44,32 @@ describe("Challenge Index", () => {
     });
   })
 
-  describe("#componentDidUpdate", () => {
+  describe("#componentDidMount", () => {
+    let setChallengesCBMock, unsubscribeFromStoreMock;
+
     beforeEach(() => {
-      spyOn(Store, 'subscribe');
-    })
+      setChallengesCBMock = function setChallengesMock() {};
+      spyOn(challengeIndex.setCodingChallenges, 'bind').and.returnValue(setChallengesCBMock);
 
-    xit("subscribes to the redux store", () => {
+      unsubscribeFromStoreMock = function unsubscribeMock() {};
+      spyOn(Store, 'subscribe').and.returnValue(unsubscribeFromStoreMock);
 
+      spyOn(codingChallengeRequests, 'getCodingChallenges');
     });
 
-    xit("defines an unsubcription function", () => {
-
+    it("subscribes to the redux store", () => {
+      challengeIndex.componentDidMount();
+      expect(Store.subscribe).toHaveBeenCalledWith(setChallengesCBMock);
     });
 
-    xit("requests coding challenges from the backend", () => {
+    it("defines an unsubcription function", () => {
+      challengeIndex.componentDidMount();
+      expect(challengeIndex.unsubscribeFromStore).toBe(unsubscribeFromStoreMock);
+    });
 
+    it("requests coding challenges from the backend", () => {
+      challengeIndex.componentDidMount();
+      expect(codingChallengeRequests.getCodingChallenges).toHaveBeenCalled();
     });
   });
 });
