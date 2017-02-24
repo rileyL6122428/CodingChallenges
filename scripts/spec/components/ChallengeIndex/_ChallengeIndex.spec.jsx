@@ -1,6 +1,3 @@
-import React from 'react';
-import ReactTestUtils from 'react-addons-test-utils';
-
 import Store from '../../../src/redux/store.js';
 import ChallengeListFilter from '../../../src/components/ChallengeIndex/classes/ChallengeListFilter.js';
 import codingChallengeRequests from '../../../src/backendApi/codingChallenges.js';
