@@ -4,7 +4,7 @@
   "description": "\"A clone of the website code eval\"",
   "author": "Riley Littlefield",
   "scripts": {
-    "postinstall": "gulp run-tests && gulp compile-scripts"
+    "postinstall": "gulp run-tests && gulp compile-scripts && gulp compile-sass"
   },
   "dependencies": {
     "babel-polyfill": "^6.20.0",
