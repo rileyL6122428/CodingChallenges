@@ -12,15 +12,21 @@ export default class DifficultyFilter extends React.Component {
 
   render() {
     return (
-      <div className="difficulty-filters">
-        <label htmlFor="easy-checkbox">Easy</label>
-        <input onChange={this.toggleFilter.bind(this)} type="checkbox" id="easy-checkbox" value="easy" />
+      <div id="difficulty-filters">
+        <div className="difficulty-filter">
+          <input onChange={this.toggleFilter.bind(this)} type="checkbox" id="easy-checkbox" value="easy" />
+          <label htmlFor="easy-checkbox">Easy</label>
+        </div>
 
-        <label htmlFor="medium-checkbox">Medium</label>
-        <input onChange={this.toggleFilter.bind(this)} type="checkbox" id="medium-checkbox" value="medium"/>
+        <div className="difficulty-filter">
+          <input onChange={this.toggleFilter.bind(this)} type="checkbox" id="medium-checkbox" value="medium"/>
+          <label htmlFor="medium-checkbox">Medium</label>
+        </div>
 
-        <label htmlFor="hard-checkbox">Hard</label>
-        <input onChange={this.toggleFilter.bind(this)} type="checkbox" id="hard-checkbox" value="hard"/>
+        <div className="difficulty-filter">
+          <input onChange={this.toggleFilter.bind(this)} type="checkbox" id="hard-checkbox" value="hard"/>
+          <label htmlFor="hard-checkbox">Hard</label>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,44 @@
 section#coding-challenges {
-  h1 {
+  width: 990px;
+  margin: auto;
 
+  h1 {
+    text-align: center;
+    font-size: 48px;
+  }
+
+  div#search-filters {
+    display: flex;
+    justify-content: center;
+  }
+
+  div#difficulty-filters {
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+  }
+
+  input#easy-checkbox, input#medium-checkbox, input#hard-checkbox {
+    display: none;
+  }
+
+  input[type="checkbox"] + label {
+    display: flex;
+    font-size: 30px;
+    opacity: 0.5;
+  }
+
+  input[type="checkbox"]:checked + label {
+    opacity: 1;
+  }
+
+  input[type="checkbox"] + label:hover {
+    cursor: pointer;
+  }
+
+  input#name-filter {
+    width: 300px;
+    margin-left: 35px;
+    font-size: 22px;
   }
 }

@@ -11,6 +11,6 @@ export default class NameFilter extends React.Component {
   }
 
   render() {
-    return <input onChange={this._updateFilter.bind(this)} type="text" placeholder="filter by name" />;
+    return <input id="name-filter" onChange={this._updateFilter.bind(this)} type="text" placeholder="filter by name" />;
   }
 }
