@@ -9,7 +9,7 @@ export default class Navbar extends React.Component {
       <section id="nav">
         <nav>
           <div id="site-header">
-            <img src="images/code_em_all.svg" />
+            <img src="images/code_em_all.svg" id="site-logo"/>
             <h1>Solve em All</h1>
           </div>
 

@@ -1,0 +1,22 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+
+  div#site-header {
+    display: flex;
+  }
+
+  img#site-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  h1 {
+    font-size: 70px;
+  }
+
+  ul#nav-options {
+    display: flex;
+  }
+}
