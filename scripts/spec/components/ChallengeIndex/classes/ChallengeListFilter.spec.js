@@ -1,4 +1,4 @@
-import ChallengeListFilter from '../../../src/components/ChallengeIndex/ChallengeListFilter.js';
+import ChallengeListFilter from '../../../../src/components/ChallengeIndex/classes/ChallengeListFilter.js';
 
 describe("ChallengeListFilter", () => {
   let listFilter, challenges;

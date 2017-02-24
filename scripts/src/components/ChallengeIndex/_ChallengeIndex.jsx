@@ -9,17 +9,19 @@ import NameFilter from './NameFilter.jsx'
 import CodingChallengeList from './CodingChallengeList.jsx';
 
 import React from 'react';
-import ChallengeListFilter from './ChallengeListFilter.js';
+import ChallengeListFilter from './classes/ChallengeListFilter.js';
 
 export default class ChallengeIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { challenges: [] }
-    this.state.challengeListFilter = new ChallengeListFilter();
+    this.state = {
+      challenges: [],
+      challengeListFilter: new ChallengeListFilter()
+    };
   }
 
   componentDidMount() {
-    let subscriptionCB = this._setCodingChallenges.bind(this);
+    let subscriptionCB = this.setCodingChallenges.bind(this);
     this.unsubscribeFromStore = Store.subscribe(subscriptionCB);
 
     codingChallengeRequests.getCodingChallenges();
@@ -29,7 +31,7 @@ export default class ChallengeIndex extends React.Component {
     this.unsubscribeFromStore();
   }
 
-  _setCodingChallenges() {
+  setCodingChallenges() {
     let codingChallengeStore = Store.getState().codingChallenges;
     let challenges = Object.values(codingChallengeStore);
     this.setState({ challenges });

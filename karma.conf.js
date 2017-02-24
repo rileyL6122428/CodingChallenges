@@ -5,10 +5,10 @@ function KarmaConfig(config) {
             './node_modules/babel-polyfill/dist/polyfill.js',
             './node_modules/jquery/dist/jquery.js',
             './node_modules/jasmine-jquery/lib/jasmine-jquery.js',
-            'scripts/spec/**/*.spec.js',
+            'scripts/spec/**/*.spec.*',
         ],
         preprocessors: {
-            './scripts/spec/**/*.spec.js': ['browserify'],
+            './scripts/spec/**/*.spec.*': ['browserify'],
         },
         browsers: ['PhantomJS'],
         singleRun: false,
