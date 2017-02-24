@@ -13,10 +13,12 @@ var sass = require('gulp-sass');
 
 
 gulp.task('default', ['watch-compile-scripts']);
-gulp.task('s', ['compile-scripts']);
-gulp.task('ws', ['watch-compile-scripts']);
+gulp.task('scr', ['compile-scripts']);
+gulp.task('wscr', ['watch-compile-scripts']);
 gulp.task('rt', ['run-tests']);
 gulp.task('dt', ['debug-tests']);
+gulp.task('sass', ['compile-sass']);
+gulp.task('wsass', ['watch-compile-sass']);
 
 
 gulp.task('compile-scripts', function () {
@@ -36,6 +38,10 @@ gulp.task('compile-sass', function () {
   return gulp.src('./styles/site.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./src/main/webapp'));
+});
+
+gulp.task('watch-compile-sass',['compile-sass'], function () {
+  gulp.watch('./styles/**/*.scss', ['compile-sass']);
 });
 
 
