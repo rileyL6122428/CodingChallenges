@@ -9,6 +9,7 @@ var gutil = require('gulp-util');
 var watchify = require('watchify');
 var path = require('path');
 var Karma = require('karma').Server;
+var sass = require('gulp-sass');
 
 
 gulp.task('default', ['watch-compile-scripts']);
@@ -28,6 +29,13 @@ gulp.task('compile-scripts', function () {
 
 gulp.task('watch-compile-scripts', ['compile-scripts'], function () {
   gulp.watch('scripts/src/**/*', ['compile-scripts']);
+});
+
+
+gulp.task('compile-sass', function () {
+  return gulp.src('./styles/site.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./src/main/webapp'));
 });
 
 
