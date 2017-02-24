@@ -53,9 +53,9 @@ describe("Challenge Index", () => {
 
       unsubscribeFromStoreMock = function unsubscribeMock() {};
       spyOn(Store, 'subscribe').and.returnValue(unsubscribeFromStoreMock);
-
-      spyOn(codingChallengeRequests, 'getCodingChallenges');
     });
+
+    beforeEach(() => spyOn(codingChallengeRequests, 'getCodingChallenges'));
 
     it("subscribes to the redux store", () => {
       challengeIndex.componentDidMount();
