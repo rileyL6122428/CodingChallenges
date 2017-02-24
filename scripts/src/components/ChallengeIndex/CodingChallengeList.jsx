@@ -6,13 +6,17 @@ export default class CodingChallengeList extends React.Component {
     super(props);
   }
 
-  render() {
+  filteredList() {
     let challenges = this.props.challenges;
     let listFilter = this.props.filter;
 
+    return listFilter.filter(challenges);
+  }
+
+  render() {
     return (
       <ul>
-        {listFilter.filter(challenges).map((challenge, idx) => {
+        {this.filteredList().map((challenge, idx) => {
           return <CodingChallengeListItem key={idx} challenge={challenge} />;
         })}
       </ul>
