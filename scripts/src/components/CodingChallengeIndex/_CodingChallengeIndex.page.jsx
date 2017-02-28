@@ -10,7 +10,7 @@ import CodingChallengeList from './CodingChallengeList.jsx';
 
 import React from 'react';
 
-export default class ChallengeIndex extends React.Component {
+export default class CodingChallengeIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
