@@ -11,4 +11,11 @@ function addChallenges(challengesList) {
   });
 }
 
-export { addChallenges };
+function addChallenge(challenge) {
+  return ({
+    payload: challenge,
+    type: CODING_CHALLENGES.ADD_CHALLENGE
+  });
+}
+
+export { addChallenges, addChallenge };
