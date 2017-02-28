@@ -13,12 +13,12 @@ var sass = require('gulp-sass');
 
 
 gulp.task('default', ['watch-compile-scripts']);
-gulp.task('scr', ['compile-scripts']);
-gulp.task('wscr', ['watch-compile-scripts']);
+gulp.task('js', ['compile-scripts']);
+gulp.task('wjs', ['watch-compile-scripts']);
 gulp.task('rt', ['run-tests']);
 gulp.task('dt', ['debug-tests']);
-gulp.task('sass', ['compile-sass']);
-gulp.task('wsass', ['watch-compile-sass']);
+gulp.task('scss', ['compile-sass']);
+gulp.task('wscss', ['watch-compile-sass']);
 
 
 gulp.task('compile-scripts', function () {
