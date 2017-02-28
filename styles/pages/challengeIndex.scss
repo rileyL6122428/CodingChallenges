@@ -47,16 +47,26 @@ section#coding-challenges {
     margin-top: 35px;
   }
 
-  li.coding-challenge {
+  li.coding-challenge > a {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    text-decoration: none;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.15);
+    }
   }
 
-  li.coding-challenge > div.challenge-difficulty {
+  li.coding-challenge div {
+    color: black;
+  }
+
+  li.coding-challenge div.challenge-difficulty {
     width: 65px;
   }
 
-  li.coding-challenge > div.challenge-name {
+  li.coding-challenge div.challenge-name {
     width: 200px;
   }
 }
