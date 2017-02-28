@@ -2,7 +2,7 @@ import { CODING_CHALLENGES } from '../constants/codingChallenges.js';
 
 function addChallenges(challengesList) {
   let payload = {};
-  debugger
+
   challengesList.forEach((challenge) => payload[challenge.id] = challenge);
 
   return ({
