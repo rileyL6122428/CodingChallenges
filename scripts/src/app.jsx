@@ -4,7 +4,7 @@ import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router'
 
 import Navbar from './components/Navbar/_Navbar.jsx';
 import ChallengeIndex from './components/ChallengeIndex/_ChallengeIndex.jsx';
-import ChallengeIndividual from './components/ChallengeIndividual/_ChallengeIndividual.jsx';
+import CodingChallenge from './components/ChallengeIndividual/_ChallengeIndividual.jsx';
 
 class App extends React.Component {
   constructor(props) { super(props); }
@@ -27,8 +27,8 @@ let AppRoutes = (
               path='coding-challenges'
               component={ChallengeIndex} />
 
-      <Route  path='coding-challenge/:sup'
-              component={ChallengeIndividual} />
+      <Route  path='coding-challenge/:challengeId'
+              component={CodingChallenge} />
     </Route>
   </Router>
 );
