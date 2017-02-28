@@ -10,7 +10,7 @@ export default class CodingChallengeListItem extends React.Component {
   render() {
     return (
       <li className="coding-challenge">
-        <Link to={"coding-challenge/" + this.props.challenge.name}>
+        <Link to={"coding-challenge/" + this.props.challenge.id}>
           <div className="challenge-difficulty">
             { this.props.challenge.difficulty }
           </div>
