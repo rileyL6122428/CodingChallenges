@@ -1,7 +1,7 @@
 import Store from '../../../src/redux/store.js';
-import ChallengeListFilter from '../../../src/components/ChallengeIndex/classes/ChallengeListFilter.js';
+import ChallengeListFilter from '../../../src/components/CodingChallengeIndex/classes/ChallengeListFilter.js';
 import codingChallengeRequests from '../../../src/backendApi/codingChallenges.js';
-import ChallengeIndex from '../../../src/components/ChallengeIndex/_ChallengeIndex.jsx';
+import ChallengeIndex from '../../../src/components/CodingChallengeIndex/_CodingChallengeIndex.page.jsx';
 
 describe("Challenge Index", () => {
   it("is defined", () => expect(ChallengeIndex).toBeDefined());
