@@ -4,11 +4,13 @@ import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router'
 
 import Navbar from './components/Navbar/_Navbar.jsx';
 import ChallengeIndex from './components/ChallengeIndex/_ChallengeIndex.jsx';
+import ChallengeIndividual from './components/ChallengeIndividual/_ChallengeIndividual.jsx';
 
 class App extends React.Component {
   constructor(props) { super(props); }
   render () {
     //TODO, NEED TO REFACTOR THE routes[0] BELOW
+    debugger
     return (
       <div>
         <Navbar routes={ this.props.routes[0].childRoutes } />
@@ -22,7 +24,12 @@ let AppRoutes = (
   <Router history={hashHistory} >
     <Route path='/' component={App} >
       <IndexRoute component={ChallengeIndex} />
-      <Route navbar-name="Challenges" path='coding-challenges' component={ChallengeIndex} />
+      <Route navbar-name="Challenges"
+              path='coding-challenges'
+              component={ChallengeIndex} />
+
+      <Route  path='coding-challenge/:sup'
+              component={ChallengeIndividual} />
     </Route>
   </Router>
 );
