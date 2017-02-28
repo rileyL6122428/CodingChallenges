@@ -10,7 +10,6 @@ class App extends React.Component {
   constructor(props) { super(props); }
   render () {
     //TODO, NEED TO REFACTOR THE routes[0] BELOW
-    debugger
     return (
       <div>
         <Navbar routes={ this.props.routes[0].childRoutes } />
