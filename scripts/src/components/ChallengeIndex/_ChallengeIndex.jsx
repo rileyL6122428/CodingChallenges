@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import Store from '../../redux/store.js';
 import { addChallenges } from '../../redux/actions/codingChallenge.actions.js';
 
