@@ -21,6 +21,7 @@ public class CodingChallenge {
 	private String name; 
 	private String description;
 	private String difficulty;
+	private String methodSignature;
 	
 	@CreatedDate
 	private Date dateCreated;
@@ -63,5 +64,13 @@ public class CodingChallenge {
 
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
+	}
+
+	public String getMethodSignature() {
+		return methodSignature;
+	}
+
+	public void setMethodSignature(String methodSignature) {
+		this.methodSignature = methodSignature;
 	}
 }
