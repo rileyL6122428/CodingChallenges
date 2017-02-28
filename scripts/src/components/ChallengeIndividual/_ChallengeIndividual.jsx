@@ -42,9 +42,14 @@ export default class CodingChallenge extends React.Component {
     return (
       <section id="coding-challenge">
         <h1>Coding Challenge</h1>
+
         <div id="coding-challenge-info">
           <h2>{ this.state.name }</h2>
           <p>{ this.state.description }</p>
+        </div>
+
+        <div id="solution-submission">
+          <textarea readOnly value={ this.state.methodSignature } rows="10" cols="50" />
         </div>
       </section>
     );
