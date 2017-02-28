@@ -4,7 +4,7 @@ import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router'
 
 import Navbar from './components/Navbar/_Navbar.jsx';
 import CodingChallengeIndex from './components/CodingChallengeIndex/_CodingChallengeIndex.page.jsx';
-import CodingChallenge from './components/ChallengeIndividual/_ChallengeIndividual.page.jsx';
+import CodingChallenge from './components/CodingChallenge/_CodingChallenge.page.jsx';
 
 class App extends React.Component {
   constructor(props) { super(props); }
