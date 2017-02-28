@@ -2,6 +2,8 @@ import Store from '../../redux/store.js';
 import { addChallenge } from '../../redux/actions/codingChallenge.actions.js';
 import codingChallengeRequests from '../../backendApi/codingChallenges.js';
 
+import SolutionSubmission from './SolutionSubmission.jsx';
+
 import React from 'react';
 
 export default class CodingChallenge extends React.Component {
@@ -48,9 +50,7 @@ export default class CodingChallenge extends React.Component {
           <p>{ this.state.description }</p>
         </div>
 
-        <div id="solution-submission">
-          <textarea readOnly value={ this.state.methodSignature } rows="10" cols="50" />
-        </div>
+        <SolutionSubmission methodSignature={this.state.methodSignature}/>
       </section>
     );
   }
