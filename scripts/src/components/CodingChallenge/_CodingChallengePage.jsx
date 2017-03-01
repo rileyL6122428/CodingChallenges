@@ -6,7 +6,7 @@ import SolutionSubmission from './SolutionSubmission.jsx';
 
 import React from 'react';
 
-export default class CodingChallenge extends React.Component {
+export default class CodingChallengePage extends React.Component {
 
   constructor(props) {
     super(props);

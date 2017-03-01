@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router'
 
 import Navbar from './components/Navbar/_Navbar.jsx';
-import CodingChallengeIndex from './components/CodingChallengeIndex/_CodingChallengeIndex.page.jsx';
-import CodingChallenge from './components/CodingChallenge/_CodingChallenge.page.jsx';
+import CodingChallengeIndexPage from './components/CodingChallengeIndex/_CodingChallengeIndexPage.jsx';
+import CodingChallengePage from './components/CodingChallenge/_CodingChallengePage.jsx';
 
 class App extends React.Component {
   constructor(props) { super(props); }
@@ -22,13 +22,13 @@ class App extends React.Component {
 let AppRoutes = (
   <Router history={hashHistory} >
     <Route path='/' component={App} >
-      <IndexRoute component={CodingChallengeIndex} />
+      <IndexRoute component={CodingChallengeIndexPage} />
       <Route navbar-name="Challenges"
               path='coding-challenges'
-              component={CodingChallengeIndex} />
+              component={CodingChallengeIndexPage} />
 
       <Route  path='coding-challenge/:challengeId'
-              component={CodingChallenge} />
+              component={CodingChallengePage} />
     </Route>
   </Router>
 );
