@@ -1,13 +1,13 @@
 import Store from '../../../src/redux/store.js';
 import ChallengeListFilter from '../../../src/components/CodingChallengeIndex/classes/ChallengeListFilter.js';
 import codingChallengeRequests from '../../../src/backendApi/codingChallenges.js';
-import ChallengeIndexPage from '../../../src/components/CodingChallengeIndex/_CodingChallengeIndexPage.jsx';
+import CodingChallengeIndexPage from '../../../src/components/CodingChallengeIndex/_CodingChallengeIndexPage.jsx';
 
 describe("Challenge Index", () => {
-  it("is defined", () => expect(ChallengeIndexPage).toBeDefined());
+  it("is defined", () => expect(CodingChallengeIndexPage).toBeDefined());
 
   let challengeIndexPage, state;
-  beforeEach(() => challengeIndexPage = new ChallengeIndexPage());
+  beforeEach(() => challengeIndexPage = new CodingChallengeIndexPage());
   beforeEach(() => state = challengeIndexPage.state);
 
   describe("#constructor", () => {
