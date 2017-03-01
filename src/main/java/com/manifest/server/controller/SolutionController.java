@@ -1,8 +1,8 @@
 package com.manifest.server.controller;
 
 import java.lang.reflect.Method;
-import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.mdkt.compiler.InMemoryJavaCompiler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.manifest.server.model.CodingChallenge;
 import com.manifest.server.model.Solution;
-import com.manifest.server.repository.CodingChallengeRepository;
 import com.manifest.server.repository.SolutionRepository;
 
 @Controller
@@ -22,13 +22,15 @@ public class SolutionController {
 	@Autowired
 	private SolutionRepository solutionRepository;
 	
+	//PROTOTYPE CODE
 	@GetMapping(path = "/api/solutions", produces = "application/json")
-	public ResponseEntity<Iterable<Solution>> testThoseSolutions() {
-		Iterable<Solution> solutions = solutionRepository.findAll();
-		
-		return new ResponseEntity<>(solutions, HttpStatus.OK);
+	public ResponseEntity<CodingChallenge> testThoseSolutions() {
+		Solution solution = solutionRepository.findOne(1L);
+		CodingChallenge challenge = solution.getCodingChallenge();
+		return new ResponseEntity<>(challenge, HttpStatus.OK);
 	}
 	
+	//PROTOTYPE CODE
 	@PostMapping(path = "/api/solution-fizzbuzz", produces = "application/json")
 	public ResponseEntity<SolutionReport> testMethod(@RequestBody SolutionSubmission solutionSubmission) {
 		SolutionReport solutionReport = new SolutionReport();
