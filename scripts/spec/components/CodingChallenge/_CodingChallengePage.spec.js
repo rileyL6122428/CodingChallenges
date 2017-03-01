@@ -6,16 +6,17 @@ import CodingChallengePage from "../../../src/components/CodingChallenge/_Coding
 describe("CodingChallenge", () => {
   it("is defined", () => expect(CodingChallengePage).toBeDefined());
 
-  let codingChallengePage;
+  let codingChallengePage, propsMock;
 
-  beforeEach(() => codingChallengePage = new CodingChallengePage());
+  beforeEach(() => {
+    codingChallengePage = new CodingChallengePage();
+    propsMock = { params: { challengeId: 1 } };
+    codingChallengePage.props = propsMock;
+  });
+
+  beforeEach(() => spyOn(codingChallengeRequests, "getCodingChallenge"));
 
   describe("#componentDidMount", () => {
-    let  propsMock;
-    beforeEach(() => {
-      propsMock = { params: { challengeID: 1 } };
-      codingChallengePage.props = propsMock
-    });
 
     it("places a subscription callback into the redux store", () => {
       let setCodingChallengeMock = function mockFunction() {};
@@ -28,20 +29,45 @@ describe("CodingChallenge", () => {
     });
 
     it("makes a request to the backend to get the coding challenge in question", () => {
-      spyOn(codingChallengeRequests, "getCodingChallenge");
-
       codingChallengePage.componentDidMount();
-      
+
       expect(codingChallengeRequests.getCodingChallenge).toHaveBeenCalledWith(propsMock.params.challengeId);
     });
   });
 
   describe("#componentWillUnmount", () => {
-    xit("unsubscribes from the redux store");
+    it("unsubscribes from the redux store", () => {
+      let unsubscribeCB = jasmine.createSpy("unsubscribe");
+      spyOn(Store, 'subscribe').and.returnValue(unsubscribeCB);
+      codingChallengePage.componentDidMount();
+
+      codingChallengePage.componentWillUnmount();
+
+      expect(unsubscribeCB).toHaveBeenCalled();
+    });
   })
 
   describe("#setCodingChallenge", () => {
-    xit("obtains the correct codingChallenge Instance from the redux store");
-    xit("sets the appropriate state on the CodingChallengeComponent");
+    let codingChallengeMock, challengeStoreMock;
+
+    beforeEach(() => {
+      codingChallengeMock = {
+        name: "MOCK_NAME",
+        description: "MOCK_DESCRIPTION",
+        methodSignature: "MOCK_METHOD_SIGNATURE"
+      };
+
+      challengeStoreMock = {};
+      challengeStoreMock[propsMock.params.challengeId] = codingChallengeMock;
+    });
+
+    it("sets the appropriate state on the codingChallengeComponent", () => {
+      spyOn(Store,'getState').and.returnValue({ codingChallenges: challengeStoreMock });
+      spyOn(codingChallengePage, 'setState');
+
+      codingChallengePage.setCodingChallenge();
+
+      expect(codingChallengePage.setState).toHaveBeenCalledWith(codingChallengeMock);
+    });
   });
 });
