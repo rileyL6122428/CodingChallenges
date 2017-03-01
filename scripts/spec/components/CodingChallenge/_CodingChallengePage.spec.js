@@ -11,19 +11,29 @@ describe("CodingChallenge", () => {
   beforeEach(() => codingChallengePage = new CodingChallengePage());
 
   describe("#componentDidMount", () => {
-    let setCodingChallengeMock;
-    beforeEach(() => setCodingChallengeMock = {});
-
-    beforeEach(() => spyOn(codingChallengePage.setCodingChallenge, 'bind'))
-
-    beforeEach(() => spyOn(Store, "subscribe"));
-
-
-    xit("places a subscription callback into the redux store", () => {
-
+    let  propsMock;
+    beforeEach(() => {
+      propsMock = { params: { challengeID: 1 } };
+      codingChallengePage.props = propsMock
     });
 
-    xit("makes a request to the backend to get the coding challenge in question");
+    it("places a subscription callback into the redux store", () => {
+      let setCodingChallengeMock = function mockFunction() {};
+      spyOn(codingChallengePage.setCodingChallenge, 'bind').and.returnValue(setCodingChallengeMock);
+      spyOn(Store, "subscribe");
+
+      codingChallengePage.componentDidMount();
+
+      expect(Store.subscribe).toHaveBeenCalledWith(setCodingChallengeMock);
+    });
+
+    it("makes a request to the backend to get the coding challenge in question", () => {
+      spyOn(codingChallengeRequests, "getCodingChallenge");
+
+      codingChallengePage.componentDidMount();
+      
+      expect(codingChallengeRequests.getCodingChallenge).toHaveBeenCalledWith(propsMock.params.challengeId);
+    });
   });
 
   describe("#componentWillUnmount", () => {
