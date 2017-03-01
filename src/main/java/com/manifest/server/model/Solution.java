@@ -1,11 +1,15 @@
 package com.manifest.server.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 public class Solution {
@@ -17,10 +21,10 @@ public class Solution {
 	private Boolean passesTests;
 	private long executionTime;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "coding_challenge_id")
-	private CodingChallenge codingChallenge;
-	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private CodingChallenge codingChallenge;	
 	
 	public Long getId() {
 		return id;

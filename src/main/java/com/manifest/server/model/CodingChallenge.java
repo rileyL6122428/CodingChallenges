@@ -12,6 +12,9 @@ import javax.persistence.OneToMany;
 
 import org.springframework.data.annotation.CreatedDate;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 public class CodingChallenge {
 
@@ -25,6 +28,7 @@ public class CodingChallenge {
 	private String methodSignature;
 	
 	@OneToMany(mappedBy = "codingChallenge", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private List<Solution> solutions;
 	
 	@CreatedDate
