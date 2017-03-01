@@ -1,13 +1,13 @@
 package com.manifest.server.model;
 
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.OneToMany;
 
 import org.springframework.data.annotation.CreatedDate;
 
@@ -22,6 +22,9 @@ public class CodingChallenge {
 	private String description;
 	private String difficulty;
 	private String methodSignature;
+	
+	@OneToMany(mappedBy = "codingChallenge", cascade = CascadeType.ALL)
+	private List<Solution> solutions;
 	
 	@CreatedDate
 	private Date dateCreated;
@@ -72,5 +75,13 @@ public class CodingChallenge {
 
 	public void setMethodSignature(String methodSignature) {
 		this.methodSignature = methodSignature;
+	}
+		
+	public List<Solution> getSolutions() {
+		return solutions;
+	}
+
+	public void setSolutions(List<Solution> solutions) {
+		this.solutions = solutions;
 	}
 }
