@@ -1,11 +1,13 @@
-package com.manifest.solutionsubmission.testsuites;
+package com.manifest.solutionsubmission;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
-public class ExampleTest {
+public class TestSuiteRetreiverTest {
 
+	@Ignore
 	@Test
 	public void test() {
 		fail("Not yet implemented");

@@ -5,5 +5,6 @@ import java.util.Map;
 import com.manifest.solutionsubmission.testsuites.SolutionTestSuite;
 
 public class TestSuitRetreiver {
-	private Map<String, SolutionTestSuite> testSuits; 
+	private Map<String, SolutionTestSuite> testSuits;
+	
 }
