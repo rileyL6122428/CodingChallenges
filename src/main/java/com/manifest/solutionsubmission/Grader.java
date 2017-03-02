@@ -1,25 +1,26 @@
 package com.manifest.solutionsubmission;
 
-import org.junit.runner.JUnitCore;
-import org.junit.runner.Result;
-
-import com.manifest.solutionsubmission.testsuites.FizzBuzzTestSuite;
 
 public class Grader {
-	private int suiteId;
+	private String challengeName;
+	private TestSuiteRetriever suiteRetreiver;
+	private TestRunner runner;
 	
-	public Grader(int suiteId) {
-		this.suiteId = suiteId;
+	public Grader(String challengeName) {
+		this.challengeName = challengeName;
 	}
 	
-	public Result grade() {
-		return JUnitCore.runClasses(FizzBuzzTestSuite.class);
+	public TestResult grade() {
+		return runner.runSuite(suiteRetreiver.getSuite(challengeName));
+	}
+
+	public void setTestSuiteRetriever(TestSuiteRetriever suiteRetreiver) {
+		this.suiteRetreiver = suiteRetreiver;
 	}
 	
-	public static void main(String[] args) {
-		Grader grader = new Grader(1);
-		Result result = grader.grade();
-		System.out.println("Was successful: " + result.wasSuccessful());
-		System.out.println("ERROR: " + result.getFailures().get(0));
+	public void setTestRunner(TestRunner testRunner) {
+		this.runner = testRunner;
 	}
+	
 }
+

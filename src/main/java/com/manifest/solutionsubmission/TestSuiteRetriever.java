@@ -1,30 +1,14 @@
 package com.manifest.solutionsubmission;
 
+import java.lang.reflect.Field;
 import java.util.Map;
 
-import com.manifest.solutionsubmission.testsuites.SolutionTestSuite;
-
 public class TestSuiteRetriever {
-	private Map<String, Class<?>> testSuites;
-	
-	public TestSuiteRetriever(Map<String, Class<?>> map) {
-		this.testSuites = map;
-	}
-	
-	public void addSuite(Class<?> suiteClass) {
-		try {
-			String challengeName;
-			challengeName = (String)suiteClass.getField("CHALLENGE_NAME").get(null);
-			testSuites.put(challengeName, suiteClass);
-			
-		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
-			e.printStackTrace();
-		}
+
+	public TestSuite getSuite(String challengeName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public Class<?> get(String challengeName) {
-		return testSuites.get(challengeName);
-	}
-	
-	
+
 }

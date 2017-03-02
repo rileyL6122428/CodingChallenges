@@ -1,10 +1,10 @@
-package com.manifest.solutionsubmission.testsuites;
+package com.manifest.solutionsubmission;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class FizzBuzzTest {
+public class TestRunnerTest {
 
 	@Test
 	public void test() {
