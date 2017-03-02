@@ -10,7 +10,7 @@ public class Grader {
 		this.challengeName = challengeName;
 	}
 	
-	public TestResult grade() {
+	public SuiteTestResult grade() {
 		return runner.runSuite(suiteRetreiver.getSuite(challengeName));
 	}
 

@@ -1,7 +1,7 @@
 package com.manifest.solutionsubmission;
 
 
-public class TestResult {
+public class SuiteTestResult {
 	public boolean passesTests;
 	public String failureMessage;
 }
