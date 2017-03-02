@@ -3,7 +3,7 @@ package com.manifest.solutionsubmission;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 
-import com.manifest.solutionsubmission.testsuites.AllTests;
+import com.manifest.solutionsubmission.testsuites.FizzBuzzTestSuite;
 
 public class Grader {
 	private int suiteId;
@@ -13,7 +13,7 @@ public class Grader {
 	}
 	
 	public Result grade() {
-		return JUnitCore.runClasses(AllTests.class);
+		return JUnitCore.runClasses(FizzBuzzTestSuite.class);
 	}
 	
 	public static void main(String[] args) {
