@@ -35,7 +35,7 @@ public class SolutionService {
 			}
 			solutionSubmission.parameterClasses = parameterClasses;
 			
-			return solutionReviewer.processSolution(solutionSubmission);
+			return solutionReviewer.reviewSubmission(solutionSubmission);
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
