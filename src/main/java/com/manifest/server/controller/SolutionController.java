@@ -23,13 +23,16 @@ import com.manifest.solutionsubmission.SolutionReviewer;
 public class SolutionController {
 	
 	@Autowired
-	private SolutionService solutionService;
-	
+	private SolutionService solutionService;	
 	
 	@PostMapping(path = "/api/solution", produces = "application/json")
 	public ResponseEntity<SolutionGrade> submitSolution(@RequestBody SolutionSubmissionRequest requestBody){
 		SolutionGrade solutionGrade = solutionService.reviewSolution(requestBody);
 		return new ResponseEntity<SolutionGrade>(solutionGrade, HttpStatus.OK);
+	}
+	
+	public void setSolutionService(SolutionService solutionService) {
+		this.solutionService = solutionService;
 	}
 }
 
