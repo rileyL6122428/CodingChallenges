@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.manifest.server.service.SolutionService.SolutionSubmission;
+import com.manifest.server.dataobjects.SolutionSubmission;
 
 public class SolutionProxyTest {
 	

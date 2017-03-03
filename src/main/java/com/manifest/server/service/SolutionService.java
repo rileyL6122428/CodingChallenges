@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.manifest.server.dataobjects.SolutionSubmission;
 import com.manifest.server.dataobjects.SolutionSubmissionRequest;
 import com.manifest.server.model.CodingChallenge;
 import com.manifest.server.model.ParameterType;
@@ -46,37 +47,6 @@ public class SolutionService {
 			SolutionGrade grade = new SolutionGrade();
 			grade.setPassesTests(false);
 			return grade;
-		}
-	}
-	
-	public static class SolutionSubmission {
-		private String sourceCode;
-		private Class<?>[] parameterClasses;
-		private String methodName;
-		private String challengeName;
-		public String getSourceCode() {
-			return sourceCode;
-		}
-		public void setSourceCode(String sourceCode) {
-			this.sourceCode = sourceCode;
-		}
-		public Class<?>[] getParameterClasses() {
-			return parameterClasses;
-		}
-		public void setParameterClasses(Class<?>[] parameterClasses) {
-			this.parameterClasses = parameterClasses;
-		}
-		public String getMethodName() {
-			return methodName;
-		}
-		public void setMethodName(String methodName) {
-			this.methodName = methodName;
-		}
-		public String getChallengeName() {
-			return challengeName;
-		}
-		public void setChallengeName(String challengeName) {
-			this.challengeName = challengeName;
 		}
 	}
 }

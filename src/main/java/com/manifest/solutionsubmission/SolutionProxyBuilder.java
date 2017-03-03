@@ -1,6 +1,8 @@
 package com.manifest.solutionsubmission;
 
-import com.manifest.server.service.SolutionService.SolutionSubmission;
+import com.manifest.server.dataobjects.SolutionSubmission;
+
+
 
 public class SolutionProxyBuilder {	
 	public SolutionProxy build(SolutionSubmission submission) {
