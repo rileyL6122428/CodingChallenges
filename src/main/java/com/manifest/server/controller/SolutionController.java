@@ -5,12 +5,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.manifest.server.model.CodingChallenge;
 import com.manifest.server.model.Solution;
 import com.manifest.server.repository.SolutionRepository;
+import com.manifest.service.SolutionService;
 import com.manifest.solutionsubmission.SolutionGrade;
 import com.manifest.solutionsubmission.SolutionReviewer;
 
@@ -20,6 +24,9 @@ public class SolutionController {
 	@Autowired
 	private SolutionRepository solutionRepository;
 	
+	@Autowired
+	private SolutionService solutionService;
+	
 	//PROTOTYPE CODE
 	@GetMapping(path = "/api/solutions", produces = "application/json")
 	public ResponseEntity<CodingChallenge> testThoseSolutions() {
@@ -28,20 +35,21 @@ public class SolutionController {
 		return new ResponseEntity<>(challenge, HttpStatus.OK);
 	}
 	
-	@PostMapping(path = "/api/solution", produces = "application/json")
-	public ResponseEntity<SolutionGrade> testMethod(@RequestBody SolutionSubmission solutionSubmission) throws ClassNotFoundException {
-		SolutionReviewer solutionReviewer = new SolutionReviewer();
-		SolutionGrade solutionGrade = solutionReviewer.processSolution(solutionSubmission);
+	@PostMapping(path = "/api/solution/{challengeId}", produces = "application/json")
+	public ResponseEntity<SolutionGrade> testMethod(@PathVariable long challengeId, 
+													@RequestBody TestMethodRequestBody requestBody){
+//		SolutionReviewer solutionReviewer = new SolutionReviewer();
+//		SolutionGrade solutionGrade = solutionReviewer.processSolution(solutionSubmission);
+		
+		SolutionGrade solutionGrade = solutionService.reviewSolution(challengeId, requestBody.sourceCode);
 		
 		return new ResponseEntity<SolutionGrade>(solutionGrade, HttpStatus.OK);
 	}
 	
 	
-	public static class SolutionSubmission {
+	
+	public static class TestMethodRequestBody {
 		public String sourceCode;
-		public String[] parameterTypes;
-		public String methodName;
-		public String challengeName;
 	}
 }
 

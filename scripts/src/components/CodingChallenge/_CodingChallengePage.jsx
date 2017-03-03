@@ -12,10 +12,13 @@ export default class CodingChallengePage extends React.Component {
     super(props);
 
     this.state = {
-      name: "",
-      description: "",
-      methodSignature: ""
-    }
+      codingChallenge: {
+        name: "",
+        description: "",
+        methodSignature: "",
+        parameterTypes: []
+      }
+    };
   }
 
   componentDidMount() {
@@ -34,23 +37,29 @@ export default class CodingChallengePage extends React.Component {
     let codingChallenge = codingChallengeStore[this.props.params.challengeId];
 
     this.setState({
-      name: codingChallenge.name,
-      description: codingChallenge.description,
-      methodSignature: codingChallenge.methodSignature
+      // name: codingChallenge.name,
+      // description: codingChallenge.description,
+      // methodSignature: codingChallenge.methodSignature,
+      // parameterTypes: codingChallenge.parameterTypes
+      codingChallenge
     });
   }
 
   render() {
+    let codingChallenge = this.state.codingChallenge;
+
     return (
       <section id="coding-challenge">
         <h1>Coding Challenge</h1>
 
         <div id="coding-challenge-info">
-          <h2>{ this.state.name }</h2>
-          <p>{ this.state.description }</p>
+          <h2>{ codingChallenge.name }</h2>
+          <p>{ codingChallenge.description }</p>
         </div>
 
-        <SolutionSubmission methodSignature={this.state.methodSignature}/>
+        <SolutionSubmission
+          codingChallenge={codingChallenge}
+          methodSignature={codingChallenge.methodSignature}/>
       </section>
     );
   }

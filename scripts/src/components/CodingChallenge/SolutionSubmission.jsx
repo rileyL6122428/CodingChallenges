@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 export default class SolutionSubmission extends React.Component {
 
@@ -10,7 +11,7 @@ export default class SolutionSubmission extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.state.solution = "Class Solution { \n\n" +
-      "\tpublic " + nextProps.methodSignature + "{ \n" +
+      "\tpublic " + nextProps.codingChallenge.methodSignature + "{ \n" +
       "\t\t\n" +
       "\t} \n\n" +
       "}";
@@ -19,6 +20,20 @@ export default class SolutionSubmission extends React.Component {
   updateSolution(editEvent) {
     let updatedSolution = editEvent.target.value;
     this.setState({ solution: updatedSolution });
+  }
+
+  submitSolution() {
+    $.ajax({
+      url: "/api/solution/" + this.props.codingChallenge.id,
+      type: "POST",
+      data: { sourceCode: this.state.solution },
+      success: (response) => { debugger },
+
+      error: (response) => {
+        console.log("ERROR");
+        debugger
+      }
+    });
   }
 
   render() {

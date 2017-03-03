@@ -1,5 +1,6 @@
 package com.manifest.solutionsubmission;
 
+import com.manifest.service.SolutionService.SolutionSubmission;
 import com.manifest.solutionsubmission.SolutionReviewer.ReviewCriteria;
 
 public class SolutionProxyBuilder {
@@ -26,6 +27,14 @@ public class SolutionProxyBuilder {
 		this.setSourceCode(details.sourceCode)
 			.setParameterTypes(details.parameterTypes)
 			.setMethodName(details.methodName);
+		
+		return build();
+	}
+	
+	public SolutionProxy build(SolutionSubmission submission) {
+		this.setSourceCode(submission.sourceCode)
+			.setParameterTypes(submission.parameterClasses)
+			.setMethodName(submission.methodName);
 		
 		return build();
 	}

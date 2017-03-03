@@ -18,7 +18,7 @@ public class TestRunner {
 	
 	private void checkIfTestPasses(SolutionTest test, SolutionGrade grade) {
 		TestResult testResult = test.execute(solutionProxy);
-		if(!testResult.passedTest) grade.passesTests = false;
+		if(!testResult.passedTest) grade.setPassesTests(false);
 	}
 	
 	public void setSolutionProxy(SolutionProxy solutionProxy) {

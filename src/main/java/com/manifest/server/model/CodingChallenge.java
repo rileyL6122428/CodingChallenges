@@ -34,6 +34,7 @@ public class CodingChallenge {
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(joinColumns = @JoinColumn(name = "challenge_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "parameter_type_id", referencedColumnName = "id"))
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private List<ParameterType> parameterTypes;
 	
 	@OneToMany(mappedBy = "codingChallenge", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
