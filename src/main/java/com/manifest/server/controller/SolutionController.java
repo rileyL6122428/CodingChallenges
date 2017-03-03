@@ -22,24 +22,12 @@ import com.manifest.solutionsubmission.SolutionReviewer;
 public class SolutionController {
 	
 	@Autowired
-	private SolutionRepository solutionRepository;
-	
-	@Autowired
 	private SolutionService solutionService;
 	
-	//PROTOTYPE CODE
-	@GetMapping(path = "/api/solutions", produces = "application/json")
-	public ResponseEntity<CodingChallenge> testThoseSolutions() {
-		Solution solution = solutionRepository.findOne(1L);
-		CodingChallenge challenge = solution.getCodingChallenge();
-		return new ResponseEntity<>(challenge, HttpStatus.OK);
-	}
 	
 	@PostMapping(path = "/api/solution/{challengeId}", produces = "application/json")
 	public ResponseEntity<SolutionGrade> testMethod(@PathVariable long challengeId, 
 													@RequestBody TestMethodRequestBody requestBody){
-//		SolutionReviewer solutionReviewer = new SolutionReviewer();
-//		SolutionGrade solutionGrade = solutionReviewer.processSolution(solutionSubmission);
 		
 		SolutionGrade solutionGrade = solutionService.reviewSolution(challengeId, requestBody.sourceCode);
 		

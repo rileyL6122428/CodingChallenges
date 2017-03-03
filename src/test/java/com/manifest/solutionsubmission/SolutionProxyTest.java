@@ -1,11 +1,8 @@
 package com.manifest.solutionsubmission;
 
-import static org.junit.Assert.*;
-
-import java.lang.reflect.InvocationTargetException;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.manifest.service.SolutionService.SolutionSubmission;
