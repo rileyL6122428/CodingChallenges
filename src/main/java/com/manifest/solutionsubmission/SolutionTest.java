@@ -17,10 +17,10 @@ public class SolutionTest<ExpectedValueType> {
 		
 		try {
 			ExpectedValueType actualValue = (ExpectedValueType)solutionProxy.invokeMethod(methodParameters);
-			result.passed = actualValue.equals(expectedValue);
+			result.passedTest = actualValue.equals(expectedValue);
 			
 		} catch (Exception e) {
-			result.passed = false;
+			result.passedTest = false;
 			result.exceptionThrown = true;
 		}
 		
@@ -28,7 +28,7 @@ public class SolutionTest<ExpectedValueType> {
 	}
 	
 	class TestResult {
-		public boolean passed;
+		public boolean passedTest;
 		public ExpectedValueType actual;
 		public ExpectedValueType expected;
 		public boolean exceptionThrown;
