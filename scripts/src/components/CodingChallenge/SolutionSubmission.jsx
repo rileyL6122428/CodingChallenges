@@ -6,7 +6,7 @@ export default class SolutionSubmission extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { solution: "" };
+    this.state = { solution: "" , solutionPassed: "YET TO SUBMIT" };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,11 +28,12 @@ export default class SolutionSubmission extends React.Component {
       type: "POST",
       contentType: "application/json",
       data: JSON.stringify({ sourceCode: this.state.solution }),
-      success: (response) => { debugger },
+      success: (response) => {
+        this.setState({ solutionPassed: (response.passesTests) ? "PASSED" : "FAILED" });
+      },
 
       error: (response) => {
         console.log("ERROR");
-        debugger
       }
     });
   }
@@ -42,6 +43,9 @@ export default class SolutionSubmission extends React.Component {
       <div id="solution-submission">
         <textarea onChange={this.updateSolution.bind(this)} value={ this.state.solution } rows="10" cols="50" />
         <button onClick={this.submitSolution.bind(this)}>Submit</button>
+        <div>
+          <p>Solution pass: {this.state.solutionPassed}</p>
+        </div>
       </div>
     );
   }
