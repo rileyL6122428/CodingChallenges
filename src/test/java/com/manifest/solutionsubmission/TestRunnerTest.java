@@ -23,7 +23,7 @@ public class TestRunnerTest {
 	public void setup() {
 		test1 = mock(SolutionTest.class);
 		test2 = mock(SolutionTest.class);
-		testSuite = new TestSuite();
+		testSuite = new TestSuite("MOCK_CHALLENGE_NAME");
 		testSuite.addTest(test1);
 		testSuite.addTest(test2);
 		

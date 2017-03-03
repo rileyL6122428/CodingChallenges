@@ -21,7 +21,7 @@ public class TestSuiteTest {
 	
 	@Before
 	public void setup() {
-		testSuite = new TestSuite();
+		testSuite = new TestSuite("MOCK_CHALLENGE_NAME");
 		
 		tests = Arrays.asList(
 			mock(SolutionTest.class),

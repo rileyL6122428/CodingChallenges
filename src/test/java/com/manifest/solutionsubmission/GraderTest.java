@@ -30,7 +30,7 @@ public class GraderTest {
 
 	@Test
 	public void grade__delegatesToTheRunnerAndSuiteRetriever() {
-		TestSuite testSuite = new TestSuite();
+		TestSuite testSuite = new TestSuite("MOCK_CHALLENGE_NAME");
 		SolutionGrade solutionGrade = new SolutionGrade();
 		
 		when(suiteRetriever.getSuite(anyString())).thenReturn(testSuite);

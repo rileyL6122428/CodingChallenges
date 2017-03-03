@@ -5,9 +5,13 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class TestSuite {
+	
+	public final String CHALLENGE_NAME;
+	
 	private List<SolutionTest> tests;
 	
-	public TestSuite() {
+	public TestSuite(String challengeName) {
+		this.CHALLENGE_NAME = challengeName;
 		this.tests = new ArrayList<SolutionTest>();
 	}
 	
