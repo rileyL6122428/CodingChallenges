@@ -19,9 +19,8 @@ public class Grader {
 		this.suiteRetreiver = suiteRetreiver;
 	}
 	
-	public Grader setTestRunner(TestRunner testRunner) {
+	public void setTestRunner(TestRunner testRunner) {
 		this.testRunner = testRunner;
-		return this;
 	}
 	
 }

@@ -5,12 +5,10 @@ import com.manifest.service.SolutionService.SolutionSubmission;
 
 public class SolutionReviewer {
 	
+	private GraderBuilder graderBuilder = new GraderBuilder();
+	
 	public SolutionGrade reviewSubmission(SolutionSubmission solutionSubmission) {
-		SolutionProxy solutionProxy = new SolutionProxyBuilder().build(solutionSubmission);
-		Grader grader = new Grader(solutionSubmission.challengeName);
-		TestRunner testRunner = new TestRunner(solutionProxy);
-		grader.setTestRunner(testRunner);
-		
+		Grader grader = graderBuilder.buildGrader(solutionSubmission);
 		return grader.grade();
 	}
 	
