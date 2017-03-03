@@ -16,7 +16,7 @@ public class SolutionTest<ExpectedValueType> {
 		result.expected = expectedValue; 
 		
 		try {
-			ExpectedValueType actualValue = (ExpectedValueType)solutionProxy.invokeMethod(methodParameters);
+			ExpectedValueType actualValue = (ExpectedValueType)solutionProxy.invokeSolution(methodParameters);
 			result.passedTest = actualValue.equals(expectedValue);
 			
 		} catch (Exception e) {

@@ -41,7 +41,7 @@ public class TestRunnerTest {
 		
 		SolutionGrade grade = testRunner.runSuite(testSuite); 
 		
-		assertFalse(grade.passesTests);
+		assertFalse(grade.isPassesTests());
 	}
 	
 	@Test
@@ -54,7 +54,7 @@ public class TestRunnerTest {
 		
 		SolutionGrade grade = testRunner.runSuite(testSuite); 
 		
-		assertTrue(grade.passesTests);
+		assertTrue(grade.isPassesTests());
 	}
 
 }

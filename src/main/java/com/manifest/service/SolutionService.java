@@ -24,29 +24,55 @@ public class SolutionService {
 			CodingChallenge codingChallenge = codingChallengeRepository.findOne(challengeId);
 			
 			SolutionSubmission solutionSubmission = new SolutionSubmission();
-			solutionSubmission.sourceCode = sourceCode;
-			solutionSubmission.challengeName = codingChallenge.getName();
-			solutionSubmission.methodName = codingChallenge.getName();
+			solutionSubmission.setSourceCode(sourceCode);
+			solutionSubmission.setChallengeName(codingChallenge.getName());
+			solutionSubmission.setMethodName(codingChallenge.getName());
 			
 			List<ParameterType> parameterTypes = codingChallenge.getParameterTypes();
 			Class<?>[] parameterClasses = new Class<?>[parameterTypes.size()];
 			for (int idx = 0; idx < parameterClasses.length; idx++) {
 				parameterClasses[idx] = Class.forName(parameterTypes.get(idx).getLibraryName());
 			}
-			solutionSubmission.parameterClasses = parameterClasses;
+			solutionSubmission.setParameterClasses(parameterClasses);
 			
 			return solutionReviewer.reviewSubmission(solutionSubmission);
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			return new SolutionGrade().setPassesTests(false);
+			SolutionGrade grade = new SolutionGrade();
+			grade.setPassesTests(false);
+			return grade;
 		}
 	}
 	
 	public static class SolutionSubmission {
-		public String sourceCode;
-		public Class<?>[] parameterClasses;
-		public String methodName;
-		public String challengeName;
+		private String sourceCode;
+		private Class<?>[] parameterClasses;
+		private String methodName;
+		private String challengeName;
+		public String getSourceCode() {
+			return sourceCode;
+		}
+		public void setSourceCode(String sourceCode) {
+			this.sourceCode = sourceCode;
+		}
+		public Class<?>[] getParameterClasses() {
+			return parameterClasses;
+		}
+		public void setParameterClasses(Class<?>[] parameterClasses) {
+			this.parameterClasses = parameterClasses;
+		}
+		public String getMethodName() {
+			return methodName;
+		}
+		public void setMethodName(String methodName) {
+			this.methodName = methodName;
+		}
+		public String getChallengeName() {
+			return challengeName;
+		}
+		public void setChallengeName(String challengeName) {
+			this.challengeName = challengeName;
+		}
 	}
 }

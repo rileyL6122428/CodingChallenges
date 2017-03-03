@@ -1,11 +1,13 @@
 package com.manifest.solutionsubmission;
 
 public class SolutionGrade {
-	public boolean passesTests = true;
+	private boolean passesTests;
 
-
-	public SolutionGrade setPassesTests(boolean passesTests) {
+	public void setPassesTests(boolean passesTests) {
 		this.passesTests = passesTests;
-		return this;
+	}
+
+	public boolean isPassesTests() {
+		return passesTests;
 	}
 }

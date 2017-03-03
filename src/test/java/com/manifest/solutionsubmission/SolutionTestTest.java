@@ -32,7 +32,7 @@ public class SolutionTestTest {
 	
 	@Test
 	public void execute_expectedMatchesActual_returnsPassingResult() throws Exception {
-		when(solutionProxy.invokeMethod(any())).thenReturn(expectedValue);
+		when(solutionProxy.invokeSolution(any())).thenReturn(expectedValue);
 		
 		TestResult testResult = solutionTest.execute(solutionProxy);
 		
@@ -42,7 +42,7 @@ public class SolutionTestTest {
 	
 	@Test
 	public void execute_expectedDoesNotMatchesActual_returnsFailingResult() throws Exception{
-		when(solutionProxy.invokeMethod(any())).thenReturn("NOT THE EXPECTED VALUE");
+		when(solutionProxy.invokeSolution(any())).thenReturn("NOT THE EXPECTED VALUE");
 		
 		TestResult testResult = solutionTest.execute(solutionProxy);
 		
@@ -52,7 +52,7 @@ public class SolutionTestTest {
 	
 	@Test
 	public void execute_solutionInvocationThrowsException_returnsFailingResult() throws Exception {
-		when(solutionProxy.invokeMethod(any())).thenThrow(Exception.class);
+		when(solutionProxy.invokeSolution(any())).thenThrow(Exception.class);
 		
 		TestResult testResult = solutionTest.execute(solutionProxy);
 		

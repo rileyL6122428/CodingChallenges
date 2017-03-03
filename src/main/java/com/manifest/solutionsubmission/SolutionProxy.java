@@ -21,24 +21,7 @@ public class SolutionProxy {
 		}
 	}
 	
-	public Object invokeMethod(Object[] args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public Object invokeSolution(Object[] args) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		return targetedMethod.invoke(solutionInstance, args);
-	}
-	
-	public static void main(String[] args) {
-		SolutionProxy fizzBuzzSolution = new SolutionProxyBuilder()
-											.setMethodName("fizzBuzz")
-											.setParameterTypes(new Class<?>[]{ Integer.class })
-											.setSourceCode("public class Solution { public String fizzBuzz(Integer num){ return \"FIZZBUZZ\"; } }")
-											.build();
-		
-		
-		try {
-			String output = (String)fizzBuzzSolution.invokeMethod(new Object[]{ 2 });
-			System.out.println(output);
-			
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			e.printStackTrace();
-		}
 	}
 }

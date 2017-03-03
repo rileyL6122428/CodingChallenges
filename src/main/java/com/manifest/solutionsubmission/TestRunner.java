@@ -12,11 +12,12 @@ public class TestRunner {
 
 	public SolutionGrade runSuite(TestSuite suite) {
 		SolutionGrade grade = new SolutionGrade();
-		suite.forEachTest((test) -> checkIfTestPasses(test, grade));
+		grade.setPassesTests(true);
+		suite.forEachTest((test) -> failIfTestFails(test, grade));
 		return grade;
 	}
 	
-	private void checkIfTestPasses(SolutionTest test, SolutionGrade grade) {
+	private void failIfTestFails(SolutionTest test, SolutionGrade grade) {
 		TestResult testResult = test.execute(solutionProxy);
 		if(!testResult.passedTest) grade.setPassesTests(false);
 	}
