@@ -8,6 +8,7 @@ public class Grader {
 	
 	public Grader(String challengeName) {
 		this.challengeName = challengeName;
+		this.suiteRetreiver = new TestSuiteRetriever();
 	}
 	
 	public SolutionGrade grade() {

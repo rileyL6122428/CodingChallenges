@@ -1,4 +1,4 @@
-INSERT INTO coding_challenge (id, date_created, name, difficulty, description, method_signature) VALUES (1, '2001-01-01', 'fizz buzz', 'easy', 'Example Description 0', 'String fizzBuzz(int num)')
+INSERT INTO coding_challenge (id, date_created, name, difficulty, description, method_signature) VALUES (1, '2001-01-01', 'fizzbuzz', 'easy', 'Example Description 0', 'String fizzBuzz(int num)')
 INSERT INTO coding_challenge (id, date_created, name, difficulty, description, method_signature) VALUES (2, '2002-01-01', 'reverse string', 'easy', 'Example Description 2', 'String reverseString(String string)')
 INSERT INTO coding_challenge (id, date_created, name, difficulty, description, method_signature) VALUES (3, '2003-01-01', 'concat strings', 'easy', 'Example Description 3', 'String concatStrings(String string1, String string2)')
 INSERT INTO coding_challenge (id, date_created, name, difficulty, description, method_signature) VALUES (4, '2004-01-01', 'linked list traversal', 'medium', 'Example Description 4', 'pending')
