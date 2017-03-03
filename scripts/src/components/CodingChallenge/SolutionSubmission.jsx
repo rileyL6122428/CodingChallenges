@@ -26,7 +26,8 @@ export default class SolutionSubmission extends React.Component {
     $.ajax({
       url: "/api/solution/" + this.props.codingChallenge.id,
       type: "POST",
-      data: { sourceCode: this.state.solution },
+      contentType: "application/json",
+      data: JSON.stringify({ sourceCode: this.state.solution }),
       success: (response) => { debugger },
 
       error: (response) => {
@@ -40,7 +41,7 @@ export default class SolutionSubmission extends React.Component {
     return (
       <div id="solution-submission">
         <textarea onChange={this.updateSolution.bind(this)} value={ this.state.solution } rows="10" cols="50" />
-        <button>Submit</button>
+        <button onClick={this.submitSolution.bind(this)}>Submit</button>
       </div>
     );
   }
