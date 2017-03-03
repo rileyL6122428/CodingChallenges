@@ -31,16 +31,16 @@ public class GraderTest {
 	@Test
 	public void grade__delegatesToTheRunnerAndSuiteRetriever() {
 		TestSuite testSuite = new TestSuite();
-		TestSuite.SuiteTestResult testResult = testSuite.new SuiteTestResult();
+		SolutionGrade solutionGrade = new SolutionGrade();
 		
 		when(suiteRetriever.getSuite(anyString())).thenReturn(testSuite);
-		when(runnerMock.runSuite(any())).thenReturn(testResult);
+		when(runnerMock.runSuite(any())).thenReturn(solutionGrade);
 		
-		TestSuite.SuiteTestResult returnedTestResult = grader.grade();
+		SolutionGrade returnedTestResult = grader.grade();
 		
 		verify(suiteRetriever).getSuite("MOCK_CHALLENGE_NAME");
 		verify(runnerMock).runSuite(testSuite);
-		assertEquals(testResult, returnedTestResult);
+		assertEquals(solutionGrade, returnedTestResult);
 	}
 	
 	

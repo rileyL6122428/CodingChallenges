@@ -18,9 +18,4 @@ public class TestSuite {
 	public void forEachTest(Consumer<SolutionTest> consumer) {
 		tests.stream().forEach(consumer);
 	}
-	
-	class SuiteTestResult {
-		public boolean passesTests;
-		public String failureMessage;
-	}
 }
