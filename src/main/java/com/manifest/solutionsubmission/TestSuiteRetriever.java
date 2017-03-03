@@ -1,14 +1,16 @@
 package com.manifest.solutionsubmission;
 
-import java.lang.reflect.Field;
 import java.util.Map;
 
 public class TestSuiteRetriever {
+	
+	private Map<String, TestSuite> testSuites;
 
 	public TestSuite getSuite(String challengeName) {
-		// TODO Auto-generated method stub
-		return null;
+		return testSuites.get(challengeName);
 	}
 
-
+	public void setTestSuites(Map<String, TestSuite> testSuites) {
+		this.testSuites = testSuites;
+	}
 }
