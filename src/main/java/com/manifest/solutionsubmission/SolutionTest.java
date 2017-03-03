@@ -1,6 +1,5 @@
 package com.manifest.solutionsubmission;
 
-import java.lang.reflect.InvocationTargetException;
 
 public class SolutionTest<ExpectedValueType> {
 	
