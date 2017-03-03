@@ -18,25 +18,28 @@ public class SolutionService {
 	
 	@Autowired
 	CodingChallengeRepository codingChallengeRepository;
-	
 	SolutionReviewer solutionReviewer = new SolutionReviewer();
 	
 	public SolutionGrade reviewSolution(SolutionSubmissionRequest submitSolutionRequest)  {
 		try {
-			CodingChallenge codingChallenge = codingChallengeRepository.findOne(submitSolutionRequest.getChallengeId());			
-			SolutionSubmission solutionSubmission = new SolutionSubmission();
-			
-			solutionSubmission.setSourceCode(submitSolutionRequest.getSourceCode());
-			solutionSubmission.setChallengeName(codingChallenge.getName());
-			solutionSubmission.setMethodName(codingChallenge.getName());
-			solutionSubmission.setParameterClasses(convertTypesToClasses(codingChallenge.getParameterTypes()));
-			
-			return solutionReviewer.reviewSubmission(solutionSubmission);
-			
+			SolutionSubmission submission = formatRequest(submitSolutionRequest);
+			return solutionReviewer.reviewSubmission(submission);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			return failingGrade();
 		}
+	}
+	
+	private SolutionSubmission formatRequest(SolutionSubmissionRequest submitSolutionRequest) throws ClassNotFoundException {
+		CodingChallenge codingChallenge = codingChallengeRepository.findOne(submitSolutionRequest.getChallengeId());			
+		SolutionSubmission solutionSubmission = new SolutionSubmission();
+		
+		solutionSubmission.setSourceCode(submitSolutionRequest.getSourceCode());
+		solutionSubmission.setChallengeName(codingChallenge.getName());
+		solutionSubmission.setMethodName(codingChallenge.getName());
+		solutionSubmission.setParameterClasses(convertTypesToClasses(codingChallenge.getParameterTypes()));
+		
+		return solutionSubmission;
 	}
 	
 	private Class<?>[] convertTypesToClasses(List<ParameterType> parameterTypes) throws ClassNotFoundException {
