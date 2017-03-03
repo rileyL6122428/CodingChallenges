@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.manifest.service.SolutionService.SolutionSubmission;
+import com.manifest.server.service.SolutionService.SolutionSubmission;
 
 public class SolutionProxyTest {
 	
@@ -25,7 +25,7 @@ public class SolutionProxyTest {
 		solutionProxy = new SolutionProxyBuilder().build(new SolutionSubmission(){{
 													setSourceCode(sourceCode);
 													setMethodName(methodName);
-													setMethodName(methodName);
+													setParameterClasses(parameterClasses);
 												}});
 	}
 	

@@ -1,6 +1,6 @@
 package com.manifest.solutionsubmission;
 
-import com.manifest.service.SolutionService.SolutionSubmission;
+import com.manifest.server.service.SolutionService.SolutionSubmission;
 
 
 public class SolutionReviewer {
