@@ -1,10 +1,5 @@
 package com.manifest.server.controller;
 
-import java.lang.reflect.Method;
-import java.util.Arrays;
-
-import org.hibernate.Hibernate;
-import org.mdkt.compiler.InMemoryJavaCompiler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +13,6 @@ import com.manifest.server.model.Solution;
 import com.manifest.server.repository.SolutionRepository;
 import com.manifest.solutionsubmission.SolutionGrade;
 import com.manifest.solutionsubmission.SolutionReviewer;
-import com.manifest.solutionsubmission.SolutionReviewer.ReviewCriteria;
 
 @Controller
 public class SolutionController {

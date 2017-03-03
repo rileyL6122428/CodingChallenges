@@ -8,7 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
 
 import org.springframework.data.annotation.CreatedDate;
 
@@ -28,6 +31,10 @@ public class CodingChallenge {
 	private String description;
 	private String difficulty;
 	private String methodSignature;
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(joinColumns = @JoinColumn(name = "challenge_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "parameter_type_id", referencedColumnName = "id"))
+	private List<ParameterType> parameterTypes;
 	
 	@OneToMany(mappedBy = "codingChallenge", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonProperty(access = Access.WRITE_ONLY)

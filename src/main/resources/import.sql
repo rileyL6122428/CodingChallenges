@@ -7,6 +7,10 @@ INSERT INTO coding_challenge (id, date_created, name, difficulty, description, m
 INSERT INTO coding_challenge (id, date_created, name, difficulty, description, method_signature) VALUES (7, '2007-01-01', 'median of two arrays', 'hard', 'Example Description 7', 'pending')
 INSERT INTO coding_challenge (id, date_created, name, difficulty, description, method_signature) VALUES (8, '2008-01-01', 'regex', 'hard', 'Example Description 8', 'pending')
 
+INSERT INTO parameter_type (id, library_name) VALUES (1, 'java.lang.Integer')
+
+INSERT INTO coding_challenge_parameter_types (challenge_id, parameter_type_id) VALUES (1, 1)
+
 INSERT INTO solution (id, execution_time, passes_tests, source_code, coding_challenge_id) VALUES (1, 1000, 'false', 'public class Solution { public String fizzbuzz(int num) { return "fizzbuzz"; } }', 1)
 INSERT INTO solution (id, execution_time, passes_tests, source_code, coding_challenge_id) VALUES (2, 2000, 'false', 'public class Solution { public String fizzbuzz(int num) { return "fizz"; } }', 1)
 INSERT INTO solution (id, execution_time, passes_tests, source_code, coding_challenge_id) VALUES (3, 3000, 'false', 'public class Solution { public String fizzbuzz(int num) { return "buzz"; } }', 1)
