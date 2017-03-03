@@ -98,4 +98,12 @@ public class CodingChallenge {
 	public void setSolutions(List<Solution> solutions) {
 		this.solutions = solutions;
 	}
+
+	public List<ParameterType> getParameterTypes() {
+		return parameterTypes;
+	}
+
+	public void setParameterTypes(List<ParameterType> parameterTypes) {
+		this.parameterTypes = parameterTypes;
+	}
 }

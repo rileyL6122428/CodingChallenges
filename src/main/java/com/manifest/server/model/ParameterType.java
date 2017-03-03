@@ -13,9 +13,6 @@ public class ParameterType {
 	
 	private String libraryName;
 	
-//	@ManyToMany(mappedBy = "parameterTypes")
-//	@JsonProperty(access = Access.WRITE_ONLY)
-//	private List<CodingChallenge> codingChallenges;
 
 	public String getLibraryName() {
 		return libraryName;
@@ -24,12 +21,12 @@ public class ParameterType {
 	public void setLibraryName(String libraryName) {
 		this.libraryName = libraryName;
 	}
-	
-//    public List<CodingChallenge> getCodingChallenges() {
-//        return codingChallenges;
-//    }
-//    
-//    public void setCodingChallenges(List<CodingChallenge> codingChallenges) {
-//        this.codingChallenges = codingChallenges;
-//    }
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

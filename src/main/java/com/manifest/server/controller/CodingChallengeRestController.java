@@ -1,5 +1,7 @@
 package com.manifest.server.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.manifest.server.model.CodingChallenge;
+import com.manifest.server.model.ParameterType;
 import com.manifest.server.repository.CodingChallengeRepository;
 
 @RestController
@@ -27,7 +30,7 @@ public class CodingChallengeRestController {
 	@GetMapping(path = "/api/coding-challenge/{id}", produces = "application/json")
 	public CodingChallenge show(@PathVariable("id") long id, HttpServletResponse response) {
 		CodingChallenge codingChallenge = codingChallengeRepository.findOne(id);
-		
+
 		if(codingChallenge == null) {
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 		} else {
