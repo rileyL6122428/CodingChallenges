@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.manifest.server.controller.SolutionController.SubmitSolutionRequest;
 import com.manifest.server.model.CodingChallenge;
 import com.manifest.server.model.ParameterType;
 import com.manifest.server.repository.CodingChallengeRepository;
@@ -19,8 +20,11 @@ public class SolutionService {
 	
 	SolutionReviewer solutionReviewer = new SolutionReviewer();
 	
-	public SolutionGrade reviewSolution(long challengeId, String sourceCode)  {
+	public SolutionGrade reviewSolution(SubmitSolutionRequest submitSolutionRequest)  {
 		try {
+			long challengeId = submitSolutionRequest.getChallengeId();
+			String sourceCode = submitSolutionRequest.getSourceCode();
+			
 			CodingChallenge codingChallenge = codingChallengeRepository.findOne(challengeId);
 			
 			SolutionSubmission solutionSubmission = new SolutionSubmission();
