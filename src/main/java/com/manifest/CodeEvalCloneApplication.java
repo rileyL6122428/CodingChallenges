@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootApplication
-@EntityScan(basePackages = { "com.manifest.server.model", "com.manifest.server.controller", "com.manifest.server.services" })
 @EnableJpaRepositories(basePackages = { "com.manifest.server.repository" })
+@EntityScan(basePackages = { "com.manifest.server.model", "com.manifest.server.controller", "com.manifest.server.services", "com.manifest.server.doconverter" })
 public class CodeEvalCloneApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CodeEvalCloneApplication.class, args);
