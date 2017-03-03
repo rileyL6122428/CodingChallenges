@@ -45,9 +45,5 @@ public class CodingChallengeRestController {
 	public void setCodingChallengeRepository(CodingChallengeRepository challengeRepository) {
 		this.codingChallengeRepository = challengeRepository;
 	}
-
-
-	
-	
 	
 }

@@ -44,7 +44,7 @@ export default class SolutionSubmission extends React.Component {
         <textarea onChange={this.updateSolution.bind(this)} value={ this.state.solution } rows="10" cols="50" />
         <button onClick={this.submitSolution.bind(this)}>Submit</button>
         <div>
-          <p>Solution pass: {this.state.solutionPassed}</p>
+          <p>Solution passed: {this.state.solutionPassed}</p>
         </div>
       </div>
     );
