@@ -24,10 +24,13 @@ export default class SolutionSubmission extends React.Component {
 
   submitSolution() {
     $.ajax({
-      url: "/api/solution/" + this.props.codingChallenge.id,
+      url: "/api/solution",
       type: "POST",
       contentType: "application/json",
-      data: JSON.stringify({ sourceCode: this.state.solution }),
+      data: JSON.stringify({
+        sourceCode: this.state.solution,
+        challengeId: this.props.codingChallenge.id
+      }),
       success: (response) => {
         this.setState({ solutionPassed: (response.passesTests) ? "PASSED" : "FAILED" });
       },
