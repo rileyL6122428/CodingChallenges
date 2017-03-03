@@ -1,13 +1,14 @@
 package com.manifest.server.controller;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
-
-import static org.mockito.Mockito.*;
 
 import com.manifest.server.dataobjects.SolutionSubmissionRequest;
 import com.manifest.server.service.SolutionService;
