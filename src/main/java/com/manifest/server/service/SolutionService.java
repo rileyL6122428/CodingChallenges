@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.manifest.server.dataobjects.SolutionSubmission;
 import com.manifest.server.dataobjects.SolutionSubmissionRequest;
-import com.manifest.server.doconverter.SolutionRequestConverter;
+import com.manifest.server.translator.SolutionRequestTranslator;
 import com.manifest.solutionsubmission.SolutionGrade;
 import com.manifest.solutionsubmission.SolutionReviewer;
 
@@ -13,7 +13,7 @@ import com.manifest.solutionsubmission.SolutionReviewer;
 public class SolutionService {
 	
 	@Autowired
-	SolutionRequestConverter requestConverter;
+	SolutionRequestTranslator requestConverter;
 	SolutionReviewer solutionReviewer = new SolutionReviewer();
 	
 	

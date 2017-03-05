@@ -1,4 +1,4 @@
-package com.manifest.server.doconverter;
+package com.manifest.server.translator;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import com.manifest.server.model.ParameterType;
 import com.manifest.server.repository.CodingChallengeRepository;
 
 @Component
-public class SolutionRequestConverter {
+public class SolutionRequestTranslator {
 	
 	@Autowired
 	CodingChallengeRepository codingChallengeRepository;
 	
-	public SolutionRequestConverter(CodingChallengeRepository codingChallengeRepository) {
+	public SolutionRequestTranslator(CodingChallengeRepository codingChallengeRepository) {
 		this.codingChallengeRepository = codingChallengeRepository;
 	}
 	
