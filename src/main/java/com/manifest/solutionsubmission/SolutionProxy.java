@@ -10,6 +10,7 @@ public class SolutionProxy {
 	private Object solutionInstance;
 	private Method targetedMethod;
 	
+	//TODO refactor this to throw instead of catching
 	public SolutionProxy(String sourceCode, String methodName, Class<?>[] parameterTypes) {
 		try {
 			Class<?> solutionClass = InMemoryJavaCompiler.compile("Solution", sourceCode);

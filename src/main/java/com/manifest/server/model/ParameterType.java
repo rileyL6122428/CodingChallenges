@@ -12,7 +12,6 @@ public class ParameterType {
 	private Long id;
 	
 	private String libraryName;
-	
 
 	public String getLibraryName() {
 		return libraryName;

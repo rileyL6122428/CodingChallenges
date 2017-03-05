@@ -12,7 +12,9 @@ public class Grader {
 	}
 	
 	public SolutionGrade grade() {
-		return testRunner.runSuite(suiteRetreiver.getSuite(challengeName));
+		TestSuite testSuite = suiteRetreiver.getSuite(challengeName);
+		SolutionGrade solutionGrade = testRunner.runSuite(testSuite);
+		return solutionGrade;
 	}
 
 	public void setTestSuiteRetriever(TestSuiteRetriever suiteRetreiver) {
