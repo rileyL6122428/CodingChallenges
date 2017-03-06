@@ -13,7 +13,7 @@ public class TestRunner {
 	public TestRunner() {}
 
 	
-	//DELETE METHOD
+	//TODO DELETE METHOD AFTER UNIT TESTS ARE ADJUSTED
 	public SolutionGrade runSuite(TestSuite suite) {
 		SolutionGrade grade = new SolutionGrade();
 		grade.setPassesTests(true);

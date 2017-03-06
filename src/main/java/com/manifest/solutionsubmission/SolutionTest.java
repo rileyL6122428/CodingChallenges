@@ -24,7 +24,7 @@ public class SolutionTest<ExpectedValueType> {
 			result.setExceptionThrown(true);
 		}
 		
-		//TODO Refactor into TestResultClass
+		//TODO logic Refactor into TestResultClass
 		result.setPassedTest(!result.isExceptionThrown() && result.getActualValue().equals(expectedValue));
 		
 		return result;
