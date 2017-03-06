@@ -61,13 +61,13 @@ describe("CodingChallenge", () => {
       challengeStoreMock[propsMock.params.challengeId] = codingChallengeMock;
     });
 
-    xit("sets the appropriate state on the codingChallengeComponent", () => {
+    it("sets the appropriate state on the codingChallengeComponent", () => {
       spyOn(Store,'getState').and.returnValue({ codingChallenges: challengeStoreMock });
       spyOn(codingChallengePage, 'setState');
 
       codingChallengePage.setCodingChallenge();
 
-      expect(codingChallengePage.setState).toHaveBeenCalledWith(codingChallengeMock);
+      expect(codingChallengePage.setState).toHaveBeenCalledWith({ codingChallenge: codingChallengeMock});
     });
   });
 });
