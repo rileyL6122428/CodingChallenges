@@ -5,23 +5,8 @@ import com.manifest.solutionsubmission.SolutionTest.TestResult;
 public class TestRunner {
 	
 	private SolutionProxy solutionProxy;
-	
-	public TestRunner(SolutionProxy solutionProxy) {
-		this.solutionProxy = solutionProxy;
-	}
-	
-	public TestRunner() {}
-
-	
-	//TODO DELETE METHOD AFTER UNIT TESTS ARE ADJUSTED
-	public SolutionGrade runSuite(TestSuite suite) {
-		SolutionGrade grade = new SolutionGrade();
-		grade.setPassesTests(true);
-		suite.forEachTest((test) -> failIfTestFails(test, grade));
-		return grade;
-	}
-	
-	//TODO REFACTOR AFTER TESTS fail
+		
+	//TODO REFACTOR AFTER TESTS ARE ADJUSTED
 	public SolutionGrade runTests(TestSuite suite, SolutionProxy solutionProxy) {
 		this.solutionProxy = solutionProxy;
 		SolutionGrade grade = new SolutionGrade();
@@ -32,7 +17,7 @@ public class TestRunner {
 	
 	private void failIfTestFails(SolutionTest test, SolutionGrade grade) {
 		TestResult testResult = test.execute(solutionProxy);
-		if(!testResult.isPassedTest()) grade.setPassesTests(false);
+		if(!testResult.getPassedTest()) grade.setPassesTests(false);
 	}
 	
 	public void setSolutionProxy(SolutionProxy solutionProxy) {

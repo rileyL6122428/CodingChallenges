@@ -16,16 +16,11 @@ public class SolutionTest<ExpectedValueType> {
 	public TestResult execute(SolutionProxy solutionProxy) {
 		TestResult result = new TestResult();
 		
-		result.setExpectedValue(expectedValue); 
-		
 		try {
-			result.setActualValue(actualValue(solutionProxy));
+			result.setValues(expectedValue, actualValue(solutionProxy));
 		} catch (Exception e) {
 			result.setExceptionThrown(true);
 		}
-		
-		//TODO logic Refactor into TestResultClass
-		result.setPassedTest(!result.isExceptionThrown() && result.getActualValue().equals(expectedValue));
 		
 		return result;
 	}
@@ -39,6 +34,13 @@ public class SolutionTest<ExpectedValueType> {
 		private ExpectedValueType actualValue;
 		private ExpectedValueType expectedValue;
 		private boolean exceptionThrown;
+		
+		public void setValues(ExpectedValueType expectedValue, ExpectedValueType actualValue) {
+			this.expectedValue = expectedValue;
+			this.actualValue = actualValue;
+			
+			this.passedTest = this.getActualValue().equals(this.expectedValue);
+		}
 		
 		public ExpectedValueType getActualValue() {
 			return actualValue;
@@ -57,8 +59,9 @@ public class SolutionTest<ExpectedValueType> {
 		}
 		public void setExceptionThrown(boolean exceptionThrown) {
 			this.exceptionThrown = exceptionThrown;
+			if(exceptionThrown) passedTest = false;
 		}
-		public boolean isPassedTest() {
+		public boolean getPassedTest() {
 			return passedTest;
 		}
 		public void setPassedTest(boolean passedTest) {

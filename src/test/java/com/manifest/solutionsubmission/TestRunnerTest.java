@@ -28,7 +28,7 @@ public class TestRunnerTest {
 		testSuite.addTest(test2);
 		
 		solutionProxy = mock(SolutionProxy.class);
-		testRunner = new TestRunner(solutionProxy);
+		testRunner = new TestRunner();
 	}
 
 	@Test
@@ -39,7 +39,7 @@ public class TestRunnerTest {
 		when(test1.execute(any())).thenReturn(failingTest1Result);
 		when(test2.execute(any())).thenReturn(passingTest2Result);
 		
-		SolutionGrade grade = testRunner.runSuite(testSuite); 
+		SolutionGrade grade = testRunner.runTests(testSuite, solutionProxy); 
 		
 		assertFalse(grade.isPassesTests());
 	}
@@ -52,7 +52,7 @@ public class TestRunnerTest {
 		when(test1.execute(any())).thenReturn(passingTest1Result);
 		when(test2.execute(any())).thenReturn(passingTest2Result);
 		
-		SolutionGrade grade = testRunner.runSuite(testSuite); 
+		SolutionGrade grade = testRunner.runTests(testSuite, solutionProxy); 
 		
 		assertTrue(grade.isPassesTests());
 	}
