@@ -1,14 +1,15 @@
 package com.manifest.solutionsubmission;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.manifest.solutionsubmission.SolutionTest.TestResult;
-
-import static org.mockito.Mockito.*;
 
 public class TestRunnerTest {
 	
@@ -33,8 +34,10 @@ public class TestRunnerTest {
 
 	@Test
 	public void runTests_notEveryTestPasses_returnsAFailingGrade() {
-		TestResult failingTest1Result = test1.new TestResult(){{ setPassedTest(false); }};
-		TestResult passingTest2Result = test2.new TestResult(){{ setPassedTest(true); }};
+		TestResult failingTest1Result = mock(TestResult.class);
+		when(failingTest1Result.getSolutionPasses()).thenReturn(false);
+		TestResult passingTest2Result = mock(TestResult.class);
+		when(passingTest2Result.getSolutionPasses()).thenReturn(true);
 		
 		when(test1.execute(any())).thenReturn(failingTest1Result);
 		when(test2.execute(any())).thenReturn(passingTest2Result);
@@ -46,8 +49,10 @@ public class TestRunnerTest {
 	
 	@Test
 	public void runTests_allTestsPass_returnsAPassingGrade() {
-		TestResult passingTest1Result = test1.new TestResult(){{ setPassedTest(true); }};
-		TestResult passingTest2Result = test2.new TestResult(){{ setPassedTest(true); }};
+		TestResult passingTest1Result = mock(TestResult.class);
+		when(passingTest1Result.getSolutionPasses()).thenReturn(true);
+		TestResult passingTest2Result = mock(TestResult.class);
+		when(passingTest2Result.getSolutionPasses()).thenReturn(true);
 		
 		when(test1.execute(any())).thenReturn(passingTest1Result);
 		when(test2.execute(any())).thenReturn(passingTest2Result);

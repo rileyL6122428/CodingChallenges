@@ -34,7 +34,7 @@ public class SolutionGrade {
 		
 		while(resultsIterator.hasNext()) {
 			TestResult result = resultsIterator.next();
-			if(!result.getPassedTest()) return false;
+			if(!result.getSolutionPasses()) return false;
 		}
 		
 		return true;
