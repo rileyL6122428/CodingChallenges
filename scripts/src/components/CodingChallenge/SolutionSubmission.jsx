@@ -1,5 +1,4 @@
 import React from 'react';
-// import $ from 'jquery';
 import solutionRequests from '../../backendApi/solutions.js';
 
 export default class SolutionSubmission extends React.Component {
