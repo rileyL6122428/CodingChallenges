@@ -9,11 +9,17 @@ export default class SolutionSubmission extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.state.solution = "Class Solution { \n\n" +
-      "\tpublic " + nextProps.codingChallenge.methodSignature + "{ \n" +
+    this.state.solution = this._defaultSolution(nextProps);
+  }
+
+  _defaultSolution(props) {
+    return (
+      "Class Solution { \n\n" +
+      "\tpublic " + props.codingChallenge.methodSignature + "{ \n" +
       "\t\t\n" +
       "\t} \n\n" +
-      "}";
+      "}"
+    );
   }
 
   updateSolution(editEvent) {
