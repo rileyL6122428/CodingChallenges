@@ -36,13 +36,7 @@ export default class CodingChallengePage extends React.Component {
     let codingChallengeStore = Store.getState().codingChallenges;
     let codingChallenge = codingChallengeStore[this.props.params.challengeId];
 
-    this.setState({
-      // name: codingChallenge.name,
-      // description: codingChallenge.description,
-      // methodSignature: codingChallenge.methodSignature,
-      // parameterTypes: codingChallenge.parameterTypes
-      codingChallenge
-    });
+    this.setState({ codingChallenge });
   }
 
   render() {
