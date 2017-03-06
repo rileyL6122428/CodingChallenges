@@ -5,7 +5,7 @@ import java.util.List;
 import com.manifest.solutionsubmission.SolutionTest.TestResult;
 
 public class SolutionGrade {
-	private boolean passesTests;
+	private boolean passing;
 	private String errorMessage;
 	
 	public static SolutionGrade failingGrade(Throwable throwable) {
@@ -20,19 +20,21 @@ public class SolutionGrade {
 	public SolutionGrade(List<TestResult> testResults) {
 		for(TestResult result: testResults) {
 			if(!result.getSolutionPasses()) {
-				passesTests = false;
+				passing = false;
 				errorMessage = result.getErrorMessage();
-				break;
+				return;
 			}
 		}
+		
+		passing = true;
 	}
 
-	public void setPassesTests(boolean passesTests) {
-		this.passesTests = passesTests;
+	private void setPassesTests(boolean passesTests) {
+		this.passing = passesTests;
 	}
 
-	public boolean passesTests() {
-		return passesTests;
+	public boolean isPassing() {
+		return passing;
 	}
 
 	public String getErrorMessage() {
