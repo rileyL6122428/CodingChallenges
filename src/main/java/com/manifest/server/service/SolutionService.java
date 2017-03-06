@@ -22,13 +22,7 @@ public class SolutionService {
 			return grader.grade(submission);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			return failingGrade();
+			return SolutionGrade.failingGrade();
 		}
-	}
-	
-	private SolutionGrade failingGrade() {
-		SolutionGrade grade = new SolutionGrade();
-		grade.setPassesTests(false);
-		return grade;
 	}
 }

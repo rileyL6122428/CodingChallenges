@@ -2,9 +2,6 @@ package com.manifest.solutionsubmission;
 
 import com.manifest.solutionsubmission.SolutionTest.TestResult;
 
-
-
-
 public class TestRunner {
 	
 	private SolutionProxy solutionProxy;
@@ -24,7 +21,7 @@ public class TestRunner {
 		return grade;
 	}
 	
-	//TODO REFACTOR AFTER TESTS
+	//TODO REFACTOR AFTER TESTS fail
 	public SolutionGrade runTests(TestSuite suite, SolutionProxy solutionProxy) {
 		this.solutionProxy = solutionProxy;
 		SolutionGrade grade = new SolutionGrade();

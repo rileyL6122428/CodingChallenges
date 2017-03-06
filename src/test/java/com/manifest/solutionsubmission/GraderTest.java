@@ -21,7 +21,7 @@ public class GraderTest {
 	private SolutionGrade solutionGrade;
 	private TestSuite testSuite;
 	private SolutionProxy solutionProxy;
-	private SolutionProxyBuilder solutionProxyBuilder;
+	private SolutionProxyFactory solutionProxyFactory;
 	
 	@Before
 	public void setup() {
@@ -31,24 +31,24 @@ public class GraderTest {
 		solutionGrade = mock(SolutionGrade.class);
 		testSuite = mock(TestSuite.class);
 		solutionProxy = mock(SolutionProxy.class);
-		solutionProxyBuilder = mock(SolutionProxyBuilder.class);
+		solutionProxyFactory = mock(SolutionProxyFactory.class);
 		
 		grader = new Grader();
 		grader.setTestRunner(runner);
 		grader.setTestSuiteRetriever(suiteRetriever);
-		grader.setSolutionProxyBuilder(solutionProxyBuilder);
+		grader.setSolutionProxyBuilder(solutionProxyFactory);
 	}
 	
 
 	@Test
-	public void grade__delegatesToTheRunnerAndSuiteRetriever() {
-		when(solutionProxyBuilder.build(any())).thenReturn(solutionProxy);
+	public void grade__delegatesToTheRunnerAndSuiteRetriever() throws Exception {
+		when(solutionProxyFactory.tryNewSolutionProxy(any())).thenReturn(solutionProxy);
 		when(suiteRetriever.getSuite(any())).thenReturn(testSuite);
 		when(runner.runTests(any(), any())).thenReturn(solutionGrade);
 		
 		SolutionGrade returnedTestResult = grader.grade(solutionSubmission);
 		
-		verify(solutionProxyBuilder).build(solutionSubmission);
+		verify(solutionProxyFactory).tryNewSolutionProxy(solutionSubmission);
 		verify(suiteRetriever).getSuite(solutionSubmission);
 		verify(runner).runTests(testSuite, solutionProxy);
 		assertEquals(solutionGrade, returnedTestResult);
