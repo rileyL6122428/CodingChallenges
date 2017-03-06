@@ -1,0 +1,4 @@
+export const GRADES = {
+  ADD_GRADE: "ADD_GRADE",
+  REMOVE_GRADE: "REMOVE_GRADE"
+}
