@@ -1,21 +1,38 @@
 package com.manifest.solutionsubmission;
 
-import static org.junit.Assert.*;
-
-import org.junit.Ignore;
+import org.junit.Before;
 import org.junit.Test;
 
-public class SolutionProxyFactoryTest {
+import com.manifest.server.dataobjects.SolutionSubmission;
 
-	@Ignore
-	@Test
-	public void constructor_sourceCodeContainsCompilationErrors_throwsException() {
-		
+public class SolutionProxyFactoryTest {
+	
+	private SolutionProxyFactory solutionProxyFactory;
+	
+	@Before
+	public void setup() {
+		solutionProxyFactory = new SolutionProxyFactory();
+	}
+
+	@Test(expected=ClassFormatError.class)
+	public void tryNewSolutionProxy_sourceCodeContainsCompilationErrors_throwsException() throws Exception {
+		solutionProxyFactory.tryNewSolutionProxy(
+			new SolutionSubmission(){{
+				setSourceCode("ERROR_RIDDEN_SOURCE_CODE");
+				setMethodName("fizzBuzz");
+				setParameterClasses(new Class<?>[] { Integer.class });
+			}}
+		);
 	}
 	
-	@Ignore
-	@Test
-	public void constructor_sourceCodeDoesNotContainMethodName_throwsException() {
-		
+	@Test(expected=NoSuchMethodException.class)
+	public void tryNewSolutionProxy_sourceCodeDoesNotContainMethodName_throwsException() throws Exception {
+		solutionProxyFactory.tryNewSolutionProxy(
+			new SolutionSubmission(){{
+				setSourceCode("public class Solution { public String fizzBuzz(Integer num){ return \"MOCK_RESULT\"; } }");
+				setMethodName("NON_MATCHING_METHOD_NAME");
+				setParameterClasses(new Class<?>[] { Integer.class });
+			}}
+		);
 	}
 }
