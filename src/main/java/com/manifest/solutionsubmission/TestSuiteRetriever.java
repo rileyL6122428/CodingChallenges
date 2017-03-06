@@ -11,7 +11,6 @@ public class TestSuiteRetriever {
 	
 	private Map<String, TestSuite> testSuites;
 	
-	//Refactor into new class
 	{
 		testSuites = new HashMap<String, TestSuite>();
 		
@@ -23,10 +22,6 @@ public class TestSuiteRetriever {
 	private void addSuite(TestSuite testSuite) {
 		testSuites.put(testSuite.CHALLENGE_NAME, testSuite);
 	}
-
-//	public TestSuite getSuite(String challengeName) {
-//		return testSuites.get(challengeName);
-//	}
 	
 	public TestSuite getSuite(SolutionSubmission submission) {
 		return testSuites.get(submission.getChallengeName());
