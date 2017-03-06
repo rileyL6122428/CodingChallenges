@@ -1,11 +1,11 @@
 import React from 'react';
-import $ from 'jquery';
+// import $ from 'jquery';
+import solutionRequests from '../../backendApi/solutions.js';
 
 export default class SolutionSubmission extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = { solution: "" , solutionPassed: "YET TO SUBMIT" };
   }
 
@@ -23,21 +23,16 @@ export default class SolutionSubmission extends React.Component {
   }
 
   submitSolution() {
-    $.ajax({
-      url: "/api/solution",
-      type: "POST",
-      contentType: "application/json",
-      data: JSON.stringify({
-        sourceCode: this.state.solution,
-        challengeId: this.props.codingChallenge.id
-      }),
-      success: (response) => {
-        this.setState({ solutionPassed: (response.passesTests) ? "PASSED" : "FAILED" });
-      },
+    solutionRequests.submitSolution({
+      sourceCode: this.state.solution,
+      challengeId: this.props.codingChallenge.id,
+      success: this._flagSolutionPassed.bind(this)
+    });
+  }
 
-      error: (response) => {
-        console.log("ERROR");
-      }
+  _flagSolutionPassed(submissionResponse) {
+    this.setState({
+      solutionPassed: (submissionResponse.passesTests) ? "PASSED" : "FAILED"
     });
   }
 
