@@ -11,7 +11,6 @@ import com.manifest.server.dataobjects.SolutionSubmission;
 public class SolutionProxyTest {
 	
 	private SolutionProxy solutionProxy;
-	private SolutionProxyFactory solutionProxyFactory;
 	
 	private String sourceCode;
 	private String methodName;
@@ -19,13 +18,11 @@ public class SolutionProxyTest {
 	
 	@Before
 	public void setup() throws Exception {
-		solutionProxyFactory = new SolutionProxyFactory();
-		
 		methodName = "mockMethod";
 		sourceCode = "public class Solution { public String " + methodName + "(Integer num){ return \"MOCK_RESULT\"; } }";
 		parameterClasses = new Class<?>[]{ Integer.class };
 		
-		solutionProxy = solutionProxyFactory.tryNewSolutionProxy(
+		solutionProxy = new SolutionProxyFactory().tryNewSolutionProxy(
 			new SolutionSubmission(){{
 				setSourceCode(sourceCode);
 				setMethodName(methodName);
@@ -34,17 +31,6 @@ public class SolutionProxyTest {
 		);
 	}
 	
-	@Ignore
-	@Test
-	public void constructor_sourceCodeContainsCompilationErrors_throwsException() {
-		
-	}
-	
-	@Ignore
-	@Test
-	public void constructor_sourceCodeDoesNotContainMethodName_throwsException() {
-		
-	}
 	
 	@Test
 	public void invokeMethod_parametersMatch_returnsAValueOfTheExpectedType() throws Exception {
@@ -53,7 +39,7 @@ public class SolutionProxyTest {
 	}
 	
 	@Test(expected=Exception.class)
-	public void invokeMethod_suppliedParametersDoNotMatchSolutionMethodSignature_throwsAnException() throws Exception {
+	public void invokeMethod_suppliedParametersDontMatchMethodSignature_throwsAnException() throws Exception {
 		solutionProxy.invokeSolution(new Object[] {});
 	}
 

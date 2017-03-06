@@ -16,6 +16,6 @@ public class SolutionProxyFactory {
 		solutionProxy.setSolutionInstance(solutionInstance);
 		solutionProxy.setTargetedMethod(targetedMethod);
 		
-		return new SolutionProxy();
+		return solutionProxy;
 	}
 }
