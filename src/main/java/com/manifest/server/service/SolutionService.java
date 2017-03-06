@@ -7,7 +7,6 @@ import com.manifest.server.dataobjects.SolutionSubmission;
 import com.manifest.server.dataobjects.SolutionSubmissionRequest;
 import com.manifest.server.translator.SolutionRequestTranslator;
 import com.manifest.solutionsubmission.Grader;
-import com.manifest.solutionsubmission.GraderBuilder;
 import com.manifest.solutionsubmission.SolutionGrade;
 
 @Service
