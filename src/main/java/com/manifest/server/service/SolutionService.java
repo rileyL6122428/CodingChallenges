@@ -15,12 +15,12 @@ public class SolutionService {
 	
 	@Autowired
 	private SolutionRequestTranslator requestConverter;
+	private Grader grader = new Grader();
 	
 	public SolutionGrade reviewSolution(SolutionSubmissionRequest submitSolutionRequest)  {
 		try {
 			SolutionSubmission submission = requestConverter.convertRequest(submitSolutionRequest);
-			Grader grader = new GraderBuilder().buildGrader(submission);
-			return grader.grade();
+			return grader.grade(submission);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			return failingGrade();

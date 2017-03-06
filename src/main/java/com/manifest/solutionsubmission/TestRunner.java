@@ -6,11 +6,21 @@ public class TestRunner {
 	
 	private SolutionProxy solutionProxy;
 	
-	TestRunner(SolutionProxy solutionProxy) {
+	public TestRunner(SolutionProxy solutionProxy) {
 		this.solutionProxy = solutionProxy;
 	}
+	
+	public TestRunner() {}
 
 	public SolutionGrade runSuite(TestSuite suite) {
+		SolutionGrade grade = new SolutionGrade();
+		grade.setPassesTests(true);
+		suite.forEachTest((test) -> failIfTestFails(test, grade));
+		return grade;
+	}
+	
+	public SolutionGrade runTests(TestSuite suite, SolutionProxy solutionProxy) {
+		this.solutionProxy = solutionProxy;
 		SolutionGrade grade = new SolutionGrade();
 		grade.setPassesTests(true);
 		suite.forEachTest((test) -> failIfTestFails(test, grade));
