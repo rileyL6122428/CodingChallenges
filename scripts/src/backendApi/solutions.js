@@ -11,7 +11,9 @@ export default {
         challengeId: params.challengeId
       }),
       success: params.success,
-      error: (response) => { console.log("SUBMISSION ERROR"); }
+      error: (response) => {
+        console.log("SUBMISSION ERROR");
+      }
     });
   }
 };

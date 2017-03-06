@@ -7,10 +7,18 @@ import com.manifest.solutionsubmission.SolutionTest.TestResult;
 
 public class SolutionGrade {
 	private boolean passesTests;
+	private String errorMessage;
 	
 	public static SolutionGrade failingGrade() {
 		SolutionGrade grade = new SolutionGrade();
 		grade.setPassesTests(false);
+		return grade;
+	}
+	
+	public static SolutionGrade failingGrade(Throwable throwable) {
+		SolutionGrade grade = new SolutionGrade();
+		grade.setPassesTests(false);
+		grade.setErrorMessage(throwable.getMessage());
 		return grade;
 	}
 	
@@ -36,8 +44,15 @@ public class SolutionGrade {
 		this.passesTests = passesTests;
 	}
 
-	public boolean isPassesTests() {
+	public boolean passesTests() {
 		return passesTests;
 	}
+
+	public String getErrorMessage() {
+		return this.errorMessage;
+	}
 	
+	public void setErrorMessage(String message) {
+		this.errorMessage = message;
+	}
 }

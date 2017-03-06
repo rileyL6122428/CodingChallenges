@@ -36,6 +36,7 @@ export default class SolutionSubmission extends React.Component {
   }
 
   _flagSolutionPassed(submissionResponse) {
+    debugger
     this.setState({
       solutionPassed: (submissionResponse.passesTests) ? "PASSED" : "FAILED"
     });

@@ -22,9 +22,8 @@ public class Grader {
 			SolutionGrade solutionGrade = testRunner.runTests(testSuite, solutionProxy);
 			return solutionGrade;
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-			return SolutionGrade.failingGrade();
+		} catch (Throwable throwable) {
+			return SolutionGrade.failingGrade(throwable);
 		}
 	}
 

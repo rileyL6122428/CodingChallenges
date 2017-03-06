@@ -18,8 +18,10 @@ public class SolutionService {
 	
 	public SolutionGrade reviewSolution(SolutionSubmissionRequest submitSolutionRequest)  {
 		try {
-			SolutionSubmission submission = requestConverter.convertRequest(submitSolutionRequest);
+			SolutionSubmission submission = requestConverter.tryConvertRequest(submitSolutionRequest);
 			return grader.grade(submission);
+			
+			//TODO refactor to return error message to front end (THIS ERROR IS NOT CAUSED BY SOLUTION SUBMISSION)
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			return SolutionGrade.failingGrade();

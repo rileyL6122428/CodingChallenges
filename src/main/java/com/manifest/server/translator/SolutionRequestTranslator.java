@@ -21,7 +21,7 @@ public class SolutionRequestTranslator {
 		this.codingChallengeRepository = codingChallengeRepository;
 	}
 	
-	public SolutionSubmission convertRequest(SolutionSubmissionRequest submitSolutionRequest) throws ClassNotFoundException {
+	public SolutionSubmission tryConvertRequest(SolutionSubmissionRequest submitSolutionRequest) throws ClassNotFoundException {
 		CodingChallenge codingChallenge = codingChallengeRepository.findOne(submitSolutionRequest.getChallengeId());			
 		SolutionSubmission solutionSubmission = new SolutionSubmission();
 		
