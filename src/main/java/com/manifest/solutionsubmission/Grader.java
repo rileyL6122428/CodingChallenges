@@ -4,7 +4,6 @@ import com.manifest.server.dataobjects.SolutionSubmission;
 
 
 public class Grader {
-//	private String challengeName;
 	private TestSuiteRetriever suiteRetreiver;
 	private TestRunner testRunner;
 	

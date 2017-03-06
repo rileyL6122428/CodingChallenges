@@ -10,6 +10,7 @@ public class TestSuiteRetriever {
 	
 	private Map<String, TestSuite> testSuites;
 	
+	//Refactor into new class
 	{
 		testSuites = new HashMap<String, TestSuite>();
 		

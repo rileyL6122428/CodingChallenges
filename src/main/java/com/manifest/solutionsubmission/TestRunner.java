@@ -15,6 +15,8 @@ public class TestRunner {
 	
 	public TestRunner() {}
 
+	
+	//DELETE METHOD
 	public SolutionGrade runSuite(TestSuite suite) {
 		SolutionGrade grade = new SolutionGrade();
 		grade.setPassesTests(true);
@@ -22,6 +24,7 @@ public class TestRunner {
 		return grade;
 	}
 	
+	//TODO REFACTOR AFTER TESTS
 	public SolutionGrade runTests(TestSuite suite, SolutionProxy solutionProxy) {
 		this.solutionProxy = solutionProxy;
 		SolutionGrade grade = new SolutionGrade();
