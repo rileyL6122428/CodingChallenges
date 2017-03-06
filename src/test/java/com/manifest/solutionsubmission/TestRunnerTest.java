@@ -33,8 +33,8 @@ public class TestRunnerTest {
 
 	@Test
 	public void runTests_notEveryTestPasses_returnsAFailingGrade() {
-		TestResult failingTest1Result = test1.new TestResult(){{ passedTest = false; }};
-		TestResult passingTest2Result = test2.new TestResult(){{ passedTest = true; }};
+		TestResult failingTest1Result = test1.new TestResult(){{ setPassedTest(false); }};
+		TestResult passingTest2Result = test2.new TestResult(){{ setPassedTest(true); }};
 		
 		when(test1.execute(any())).thenReturn(failingTest1Result);
 		when(test2.execute(any())).thenReturn(passingTest2Result);
@@ -46,8 +46,8 @@ public class TestRunnerTest {
 	
 	@Test
 	public void runTests_allTestsPass_returnsAPassingGrade() {
-		TestResult passingTest1Result = test1.new TestResult(){{ passedTest = true; }};
-		TestResult passingTest2Result = test2.new TestResult(){{ passedTest = true; }};
+		TestResult passingTest1Result = test1.new TestResult(){{ setPassedTest(true); }};
+		TestResult passingTest2Result = test2.new TestResult(){{ setPassedTest(true); }};
 		
 		when(test1.execute(any())).thenReturn(passingTest1Result);
 		when(test2.execute(any())).thenReturn(passingTest2Result);

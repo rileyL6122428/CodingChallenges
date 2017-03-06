@@ -36,8 +36,8 @@ public class SolutionTestTest {
 		
 		TestResult testResult = solutionTest.execute(solutionProxy);
 		
-		assertTrue(testResult.passedTest);
-		assertFalse(testResult.exceptionThrown);
+		assertTrue(testResult.isPassedTest());
+		assertFalse(testResult.isExceptionThrown());
 	}
 	
 	@Test
@@ -46,8 +46,8 @@ public class SolutionTestTest {
 		
 		TestResult testResult = solutionTest.execute(solutionProxy);
 		
-		assertFalse(testResult.passedTest);
-		assertFalse(testResult.exceptionThrown);
+		assertFalse(testResult.isPassedTest());
+		assertFalse(testResult.isExceptionThrown());
 	}
 	
 	@Test
@@ -56,8 +56,8 @@ public class SolutionTestTest {
 		
 		TestResult testResult = solutionTest.execute(solutionProxy);
 		
-		assertFalse(testResult.passedTest);
-		assertTrue(testResult.exceptionThrown);
+		assertFalse(testResult.isPassedTest());
+		assertTrue(testResult.isExceptionThrown());
 	}
 
 }

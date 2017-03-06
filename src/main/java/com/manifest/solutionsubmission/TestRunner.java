@@ -2,6 +2,9 @@ package com.manifest.solutionsubmission;
 
 import com.manifest.solutionsubmission.SolutionTest.TestResult;
 
+
+
+
 public class TestRunner {
 	
 	private SolutionProxy solutionProxy;
@@ -29,7 +32,7 @@ public class TestRunner {
 	
 	private void failIfTestFails(SolutionTest test, SolutionGrade grade) {
 		TestResult testResult = test.execute(solutionProxy);
-		if(!testResult.passedTest) grade.setPassesTests(false);
+		if(!testResult.isPassedTest()) grade.setPassesTests(false);
 	}
 	
 	public void setSolutionProxy(SolutionProxy solutionProxy) {

@@ -1,5 +1,7 @@
 package com.manifest.solutionsubmission;
 
+import java.lang.reflect.InvocationTargetException;
+
 
 public class SolutionTest<ExpectedValueType> {
 	
@@ -13,24 +15,54 @@ public class SolutionTest<ExpectedValueType> {
 	
 	public TestResult execute(SolutionProxy solutionProxy) {
 		TestResult result = new TestResult();
-		result.expected = expectedValue; 
+		
+		result.setExpectedValue(expectedValue); 
 		
 		try {
-			ExpectedValueType actualValue = (ExpectedValueType)solutionProxy.invokeSolution(methodParameters);
-			result.passedTest = actualValue.equals(expectedValue);
-			
+			result.setActualValue(actualValue(solutionProxy));
 		} catch (Exception e) {
-			result.passedTest = false;
-			result.exceptionThrown = true;
+			result.setExceptionThrown(true);
 		}
+		
+		//TODO Refactor into TestResultClass
+		result.setPassedTest(!result.isExceptionThrown() && result.getActualValue().equals(expectedValue));
 		
 		return result;
 	}
 	
+	private ExpectedValueType actualValue(SolutionProxy solutionProxy) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		return (ExpectedValueType)solutionProxy.invokeSolution(methodParameters);
+	}
+	
 	class TestResult {
-		public boolean passedTest;
-		public ExpectedValueType actual;
-		public ExpectedValueType expected;
-		public boolean exceptionThrown;
+		private boolean passedTest;
+		private ExpectedValueType actualValue;
+		private ExpectedValueType expectedValue;
+		private boolean exceptionThrown;
+		
+		public ExpectedValueType getActualValue() {
+			return actualValue;
+		}
+		public void setActualValue(ExpectedValueType actualValue) {
+			this.actualValue = actualValue;
+		}
+		public ExpectedValueType getExpectedValue() {
+			return expectedValue;
+		}
+		public void setExpectedValue(ExpectedValueType expectedValue) {
+			this.expectedValue = expectedValue;
+		}
+		public boolean isExceptionThrown() {
+			return exceptionThrown;
+		}
+		public void setExceptionThrown(boolean exceptionThrown) {
+			this.exceptionThrown = exceptionThrown;
+		}
+		public boolean isPassedTest() {
+			return passedTest;
+		}
+		public void setPassedTest(boolean passedTest) {
+			this.passedTest = passedTest;
+		}
 	}
 }
