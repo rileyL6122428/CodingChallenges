@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.manifest.server.dataobjects.SolutionSubmission;
 import com.manifest.solutionsubmission.testsuites.FizzBuzzSuite;
 
 public class TestSuiteRetriever {
@@ -23,8 +24,12 @@ public class TestSuiteRetriever {
 		testSuites.put(testSuite.CHALLENGE_NAME, testSuite);
 	}
 
-	public TestSuite getSuite(String challengeName) {
-		return testSuites.get(challengeName);
+//	public TestSuite getSuite(String challengeName) {
+//		return testSuites.get(challengeName);
+//	}
+	
+	public TestSuite getSuite(SolutionSubmission submission) {
+		return testSuites.get(submission.getChallengeName());
 	}
 
 	public void setTestSuites(Map<String, TestSuite> testSuites) {
