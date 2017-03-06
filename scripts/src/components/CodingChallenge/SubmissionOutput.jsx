@@ -40,7 +40,7 @@ export default class SubmissionOutput extends React.Component {
   }
 
   errorMessage() {
-    return <p>YOUR CODE FAILED</p>;
+    return <p>{this.state.grade.errorMessage}</p>;
   }
 
   render() {
