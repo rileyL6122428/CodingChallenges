@@ -17,5 +17,6 @@ public class SolutionGradeTest {
 		assertEquals("MOCK EXCEPTION MESSAGE", grade.getErrorMessage());
 		assertFalse(grade.passesTests());
 	}
+	
 
 }

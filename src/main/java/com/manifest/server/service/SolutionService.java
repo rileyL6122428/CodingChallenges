@@ -21,10 +21,9 @@ public class SolutionService {
 			SolutionSubmission submission = requestConverter.tryConvertRequest(submitSolutionRequest);
 			return grader.grade(submission);
 			
-			//TODO refactor to return error message to front end (THIS ERROR IS NOT CAUSED BY SOLUTION SUBMISSION)
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			return SolutionGrade.failingGrade();
+		} catch (ClassNotFoundException exception) {
+			exception.printStackTrace();
+			return null;
 		}
 	}
 }

@@ -18,9 +18,14 @@ public class SolutionController {
 	private SolutionService solutionService;	
 	
 	@PostMapping(path = "/api/solution", produces = "application/json")
-	public ResponseEntity<SolutionGrade> submitSolution(@RequestBody SolutionSubmissionRequest requestBody){
+	public ResponseEntity<?> submitSolution(@RequestBody SolutionSubmissionRequest requestBody){
 		SolutionGrade solutionGrade = solutionService.reviewSolution(requestBody);
-		return new ResponseEntity<SolutionGrade>(solutionGrade, HttpStatus.OK);
+		
+		if(solutionGrade != null) {
+			return new ResponseEntity<SolutionGrade>(solutionGrade, HttpStatus.OK);			
+		} else {
+			return new ResponseEntity<Exception>(new Exception("INTERNAL SERVER ERROR"), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 	public void setSolutionService(SolutionService solutionService) {

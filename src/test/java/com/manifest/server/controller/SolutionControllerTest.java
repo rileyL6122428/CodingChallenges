@@ -8,7 +8,9 @@ import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.assertThat;
 import org.springframework.http.ResponseEntity;
+import static org.hamcrest.CoreMatchers.instanceOf;
 
 import com.manifest.server.dataobjects.SolutionSubmissionRequest;
 import com.manifest.server.service.SolutionService;
@@ -28,15 +30,25 @@ public class SolutionControllerTest {
 	}
 	
 	@Test
-	public void submitSolution__returnsGradeReturnedBySolutionService() {
+	public void submitSolution_solutionServiceReturnsGrade_returnsGradeReturnedBySolutionService() {
 		SolutionGrade grade = new SolutionGrade();
 		when(solutionService.reviewSolution(any())).thenReturn(grade);
 		SolutionSubmissionRequest submissionRequest = new SolutionSubmissionRequest();
 		
-		ResponseEntity<SolutionGrade> response = solutionController.submitSolution(submissionRequest);
+		ResponseEntity<?> response = solutionController.submitSolution(submissionRequest);
 		
 		verify(solutionService).reviewSolution(submissionRequest);
 		assertEquals(grade, response.getBody());
 	}
 
+	@Test
+	public void submitSolution_solutionServiceReturnsNull_returnsGradeReturnedBySolutionService() {
+		when(solutionService.reviewSolution(any())).thenReturn(null);
+		SolutionSubmissionRequest submissionRequest = new SolutionSubmissionRequest();
+		
+		ResponseEntity<?> response = solutionController.submitSolution(submissionRequest);
+		
+		verify(solutionService).reviewSolution(submissionRequest);
+		assertThat(response.getBody(), instanceOf(Throwable.class));
+	}
 }
