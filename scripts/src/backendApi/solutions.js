@@ -1,4 +1,6 @@
 import $ from 'jquery';
+import { addGrade } from '../redux/actions/grade.actions.js';
+import Store from '../redux/store.js';
 
 export default {
   submitSolution: (params) => {
@@ -10,10 +12,8 @@ export default {
         sourceCode: params.sourceCode,
         challengeId: params.challengeId
       }),
-      success: params.success,
-      error: (response) => {
-        console.log("SUBMISSION ERROR");
-      }
+      success: (solutionGrade) => Store.dispatch(addGrade(solutionGrade)),
+      error: (response) => console.log("SUBMISSION ERROR")
     });
   }
 };

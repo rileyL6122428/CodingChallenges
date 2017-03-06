@@ -2,7 +2,7 @@ import { GRADES } from "../constants/grades.js";
 
 function addGrade(grade) {
   return ({
-    payload: grade
+    payload: grade,
     type: GRADES.ADD_GRADE
   });
 }
@@ -14,4 +14,4 @@ function removeGrade() {
   });
 }
 
-export { addGrade };
+export { addGrade, removeGrade };

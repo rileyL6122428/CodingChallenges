@@ -3,14 +3,13 @@ import solutionRequests from '../../backendApi/solutions.js';
 import SubmissionOutput from './SubmissionOutput.jsx';
 
 export default class SolutionSubmission extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = { solution: "" , solutionPassed: "YET TO SUBMIT" };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.state.solution = this._defaultSolution(nextProps);
+  componentWillMount() {
+    this.state.solution = this._defaultSolution(this.props);
   }
 
   _defaultSolution(props) {
@@ -28,18 +27,11 @@ export default class SolutionSubmission extends React.Component {
     this.setState({ solution: updatedSolution });
   }
 
-  submitSolution() {
+  submitSolution(clickEvent) {
+    clickEvent.preventDefault();
     solutionRequests.submitSolution({
       sourceCode: this.state.solution,
       challengeId: this.props.codingChallenge.id,
-      success: this._flagSolutionPassed.bind(this)
-    });
-  }
-
-  _flagSolutionPassed(submissionResponse) {
-    debugger
-    this.setState({
-      solutionPassed: (submissionResponse.passesTests) ? "PASSED" : "FAILED"
     });
   }
 
