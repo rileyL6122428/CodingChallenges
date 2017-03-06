@@ -16,7 +16,6 @@ export default class CodingChallengePage extends React.Component {
         name: "",
         description: "",
         methodSignature: "",
-        // parameterTypes: []
       }
     };
   }
