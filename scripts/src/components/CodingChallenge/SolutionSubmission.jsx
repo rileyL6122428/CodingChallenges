@@ -1,5 +1,6 @@
 import React from 'react';
 import solutionRequests from '../../backendApi/solutions.js';
+import SubmissionOutput from './SubmissionOutput.jsx';
 
 export default class SolutionSubmission extends React.Component {
 
@@ -47,9 +48,7 @@ export default class SolutionSubmission extends React.Component {
       <div id="solution-submission">
         <textarea onChange={this.updateSolution.bind(this)} value={ this.state.solution } rows="10" cols="50" />
         <button onClick={this.submitSolution.bind(this)}>Submit</button>
-        <div>
-          <p>Solution passed: {this.state.solutionPassed}</p>
-        </div>
+        <SubmissionOutput />
       </div>
     );
   }
