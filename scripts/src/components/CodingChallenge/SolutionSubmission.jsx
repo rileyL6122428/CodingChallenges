@@ -10,7 +10,6 @@ export default class SolutionSubmission extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if(this.props.codingChallenge !== nextProps.codingChallenge) {
-      debugger
       this.setState({ solution: this._defaultSolution(nextProps) });
     }
   }
