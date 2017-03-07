@@ -1,6 +1,7 @@
 package com.manifest.solutionsubmission;
 
 import com.manifest.server.dataobjects.SolutionSubmission;
+import com.manifest.solutionsubmission.throwables.TargetMethodMissingException;
 
 
 public class Grader {
@@ -22,9 +23,15 @@ public class Grader {
 			SolutionGrade solutionGrade = testRunner.runTests(testSuite, solutionProxy);
 			return solutionGrade;
 			
+		} catch(ClassFormatError classFormatError) {
+			return SolutionGrade.failingGrade(classFormatError);
+		} catch(NoSuchMethodException noSuchMethodException) {
+			TargetMethodMissingException targetMissingException = TargetMethodMissingException.newException(noSuchMethodException);
+			return SolutionGrade.failingGrade(targetMissingException);
 		} catch (Throwable throwable) {
 			throwable.printStackTrace();
-			return SolutionGrade.failingGrade(throwable);
+			return null;
+			
 		}
 	}
 
