@@ -41,10 +41,10 @@ public class SolutionTestTest {
 		Object[] methodParameters = new Object[]{ "ARG1" };
 		SolutionTest<String> solutionTest = new SolutionTest<String>(methodParameters, EXPECTED_VALUE);
 		when(solutionProxy.invokeSolution(any())).thenReturn(NOT_EXPECTED_VALUE);
-		String expectedErrorMessage = "Test failed. \n" + 
-			"Expected value: " + EXPECTED_VALUE + "\n" +
-			"Actual value: " + NOT_EXPECTED_VALUE + "\n" +
-			"Inputs: " + Joiner.on(", ").join(methodParameters);
+		String expectedErrorMessage = "Test failed. " + 
+			"Expected value: (" + EXPECTED_VALUE + ")" +
+			"Actual value: (" + NOT_EXPECTED_VALUE + ")" +
+			"Inputs: (" + Joiner.on(", ").join(methodParameters) + ")";
 		
 		TestResult testResult = solutionTest.execute(solutionProxy);
 		
@@ -57,10 +57,10 @@ public class SolutionTestTest {
 		Object[] methodParameters = new Object[]{ "ARG1", "ARG2" };
 		SolutionTest<String> solutionTest = new SolutionTest<String>(methodParameters, EXPECTED_VALUE);
 		when(solutionProxy.invokeSolution(any())).thenReturn(NOT_EXPECTED_VALUE);
-		String expectedErrorMessage = "Test failed. \n" + 
-			"Expected value: " + EXPECTED_VALUE + "\n" +
-			"Actual value: " + NOT_EXPECTED_VALUE + "\n" +
-			"Inputs: " + Joiner.on(", ").join(methodParameters);
+		String expectedErrorMessage = "Test failed. " + 
+			"Expected value: (" + EXPECTED_VALUE + ")" +
+			"Actual value: (" + NOT_EXPECTED_VALUE + ")" +
+			"Inputs: (" + Joiner.on(", ").join(methodParameters) + ")";
 		
 		TestResult testResult = solutionTest.execute(solutionProxy);
 		

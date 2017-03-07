@@ -41,10 +41,10 @@ public class SolutionTest<ExpectedValueType> {
 		}
 		
 		private void setErrorMessage() {
-			this.errorMessage = "Test failed. \n" + 
-			"Expected value: " + expectedValue + "\n" +
-			"Actual value: " + this.actualValue + "\n" +
-			"Inputs: " + Joiner.on(", ").join(methodParameters);
+			this.errorMessage = "Test failed. " + 
+			"Expected value: (" + expectedValue + ")" +
+			"Actual value: (" + this.actualValue + ")" +
+			"Inputs: (" + Joiner.on(", ").join(methodParameters) + ")";
 		}
 		
 		TestResult(Throwable throwable) {
