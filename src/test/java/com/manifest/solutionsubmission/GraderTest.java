@@ -1,12 +1,16 @@
 package com.manifest.solutionsubmission;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.manifest.server.dataobjects.SolutionSubmission;
@@ -18,7 +22,6 @@ public class GraderTest {
 	private TestRunner runner;
 	private TestSuiteRetriever suiteRetriever;
 	private SolutionSubmission solutionSubmission;
-	private SolutionGrade solutionGrade;
 	private TestSuite testSuite;
 	private SolutionProxy solutionProxy;
 	private SolutionProxyFactory solutionProxyFactory;
@@ -28,7 +31,6 @@ public class GraderTest {
 		runner = mock(TestRunner.class);		
 		suiteRetriever = mock(TestSuiteRetriever.class);
 		solutionSubmission = mock(SolutionSubmission.class);
-		solutionGrade = mock(SolutionGrade.class);
 		testSuite = mock(TestSuite.class);
 		solutionProxy = mock(SolutionProxy.class);
 		solutionProxyFactory = mock(SolutionProxyFactory.class);
@@ -41,18 +43,39 @@ public class GraderTest {
 	
 
 	@Test
-	public void grade__delegatesToTheRunnerAndSuiteRetriever() throws Exception {
+	public void grade_gradingDoesNotThrow_delegatesToTheRunnerAndSuiteRetriever() throws Exception {
+		SolutionGrade expectedGrade = mock(SolutionGrade.class);
 		when(solutionProxyFactory.tryNewSolutionProxy(any())).thenReturn(solutionProxy);
 		when(suiteRetriever.getSuite(any())).thenReturn(testSuite);
-		when(runner.runTests(any(), any())).thenReturn(solutionGrade);
+		when(runner.runTests(any(), any())).thenReturn(expectedGrade);
 		
-		SolutionGrade returnedTestResult = grader.grade(solutionSubmission);
+		SolutionGrade actualGrade = grader.grade(solutionSubmission);
 		
 		verify(solutionProxyFactory).tryNewSolutionProxy(solutionSubmission);
 		verify(suiteRetriever).getSuite(solutionSubmission);
 		verify(runner).runTests(testSuite, solutionProxy);
-		assertEquals(solutionGrade, returnedTestResult);
+		assertEquals(expectedGrade, actualGrade);
 	}
 	
+	@Test
+	public void grade_gradingThrowsClassFormatError_returnsFailingGradeWithErrorMessage() throws Exception {
+		when(solutionProxyFactory.tryNewSolutionProxy(any())).thenThrow(new ClassFormatError("MOCK_ERROR_MESSAGE"));
+		
+		SolutionGrade grade = grader.grade(solutionSubmission);
+		
+		assertFalse(grade.isPassing());
+		assertThat(grade.getErrorMessage(), containsString("MOCK_ERROR_MESSAGE"));
+	}
 	
+	@Ignore
+	@Test
+	public void grade_gradingThrowsNoSuchMethodException_returnsFailingGradeWithErrorMessage() throws Exception {
+		
+	}
+	
+	@Ignore
+	@Test
+	public void grade_gradingThrowsUnforseenThrowable_returnsNullAndPrintsStackTrace() throws Exception {
+		
+	}
 }

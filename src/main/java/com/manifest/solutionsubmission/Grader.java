@@ -21,22 +21,34 @@ public class Grader {
 		SolutionGrade grade;
 		
 		try {
-			SolutionProxy solutionProxy = solutionProxyFactory.tryNewSolutionProxy(submission);
-			TestSuite testSuite = suiteRetreiver.getSuite(submission);
-			grade = testRunner.runTests(testSuite, solutionProxy);
-			
+			grade = tryTestSolution(submission);
 		} catch(ClassFormatError classFormatError) {
-			SolutionCompilationException compilationException = SolutionCompilationException.newException(classFormatError);
-			grade = SolutionGrade.failingGrade(compilationException);
+			grade = failingGrade(classFormatError);
 		} catch(NoSuchMethodException noSuchMethodException) {
-			TargetMethodMissingException targetMissingException = TargetMethodMissingException.newException(noSuchMethodException);
-			grade = SolutionGrade.failingGrade(targetMissingException);
+			grade = failingGrade(noSuchMethodException);
 		} catch (Throwable throwable) {
-			throwable.printStackTrace();
 			grade = null;
+			throwable.printStackTrace();
 		}
 		
 		return grade;
+	}
+	
+	private SolutionGrade tryTestSolution(SolutionSubmission submission) throws Exception {
+		SolutionProxy solutionProxy = solutionProxyFactory.tryNewSolutionProxy(submission);
+		TestSuite testSuite = suiteRetreiver.getSuite(submission);
+		SolutionGrade grade = testRunner.runTests(testSuite, solutionProxy); 
+		return grade;
+	}
+	
+	private SolutionGrade failingGrade(ClassFormatError classFormatError) {
+		SolutionCompilationException compilationException = SolutionCompilationException.newException(classFormatError);
+		return SolutionGrade.failingGrade(compilationException);
+	}
+	
+	private SolutionGrade failingGrade(NoSuchMethodException noSuchMethodException) {
+		TargetMethodMissingException targetMissingException = TargetMethodMissingException.newException(noSuchMethodException);
+		return SolutionGrade.failingGrade(targetMissingException);
 	}
 
 	public void setTestSuiteRetriever(TestSuiteRetriever suiteRetreiver) {
