@@ -14,7 +14,7 @@ export default class SolutionSubmission extends React.Component {
 
   _defaultSolution(nextProps) {
     return (
-      "Class Solution { \n\n" +
+      "public class Solution { \n\n" +
       "\tpublic " + nextProps.codingChallenge.methodSignature + "{ \n" +
       "\t\t\n" +
       "\t} \n\n" +
