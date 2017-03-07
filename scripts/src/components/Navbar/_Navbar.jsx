@@ -1,10 +1,10 @@
+// import { Link } from 'react-router'
+import NavbarOption from './NavbarOption.jsx';
 import React from 'react';
 
 export default class Navbar extends React.Component {
 
   render() {
-    let routes = this.props.routes;
-
     return (
       <section id="nav">
         <nav>
@@ -14,8 +14,8 @@ export default class Navbar extends React.Component {
           </div>
 
           <ul id="nav-options">
-            {routes.map((route, idx) => {
-              return <li key={idx}>{ route["navbar-name"] }</li>;
+            {this.props.routes.map((route, idx) => {
+              return <NavbarOption key={idx} route={route} />;
             })}
           </ul>
         </nav>
