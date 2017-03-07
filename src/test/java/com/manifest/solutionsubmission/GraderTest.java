@@ -3,14 +3,15 @@ package com.manifest.solutionsubmission;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.manifest.server.dataobjects.SolutionSubmission;
@@ -67,15 +68,25 @@ public class GraderTest {
 		assertThat(grade.getErrorMessage(), containsString("MOCK_ERROR_MESSAGE"));
 	}
 	
-	@Ignore
 	@Test
 	public void grade_gradingThrowsNoSuchMethodException_returnsFailingGradeWithErrorMessage() throws Exception {
+		when(solutionProxyFactory.tryNewSolutionProxy(any())).thenThrow(new NoSuchMethodException("MOCK_ERROR_MESSAGE"));
 		
+		SolutionGrade grade = grader.grade(solutionSubmission);
+		
+		assertFalse(grade.isPassing());
+		assertThat(grade.getErrorMessage(), containsString("MOCK_ERROR_MESSAGE"));
 	}
 	
-	@Ignore
 	@Test
 	public void grade_gradingThrowsUnforseenThrowable_returnsNullAndPrintsStackTrace() throws Exception {
+		ArrayIndexOutOfBoundsException unexpectedException = mock(ArrayIndexOutOfBoundsException.class);
+		doNothing().when(unexpectedException).printStackTrace();
+		when(solutionProxyFactory.tryNewSolutionProxy(any())).thenThrow(unexpectedException);
 		
+		SolutionGrade grade = grader.grade(solutionSubmission);
+		
+		assertNull(grade);
+		verify(unexpectedException).printStackTrace();
 	}
 }
