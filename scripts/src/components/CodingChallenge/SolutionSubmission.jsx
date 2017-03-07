@@ -36,7 +36,6 @@ export default class SolutionSubmission extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <div id="solution-submission">
         <textarea onChange={this.updateSolution.bind(this)} value={ this.state.solution } rows="10" cols="50" />
