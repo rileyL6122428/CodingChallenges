@@ -23,6 +23,7 @@ public class Grader {
 			return solutionGrade;
 			
 		} catch (Throwable throwable) {
+			throwable.printStackTrace();
 			return SolutionGrade.failingGrade(throwable);
 		}
 	}
