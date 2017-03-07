@@ -8,14 +8,14 @@ export default class SolutionSubmission extends React.Component {
     this.state = { solution: "" , solutionPassed: "YET TO SUBMIT" };
   }
 
-  componentWillMount() {
-    this.state.solution = this._defaultSolution(this.props);
+  componentWillReceiveProps(nextProps) {
+    this.setState({ solution: this._defaultSolution(nextProps) });
   }
 
-  _defaultSolution(props) {
+  _defaultSolution(nextProps) {
     return (
       "Class Solution { \n\n" +
-      "\tpublic " + props.codingChallenge.methodSignature + "{ \n" +
+      "\tpublic " + nextProps.codingChallenge.methodSignature + "{ \n" +
       "\t\t\n" +
       "\t} \n\n" +
       "}"
@@ -36,6 +36,7 @@ export default class SolutionSubmission extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div id="solution-submission">
         <textarea onChange={this.updateSolution.bind(this)} value={ this.state.solution } rows="10" cols="50" />

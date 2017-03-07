@@ -34,13 +34,11 @@ export default class CodingChallengePage extends React.Component {
   setCodingChallenge() {
     let codingChallengeStore = Store.getState().codingChallenges;
     let codingChallenge = codingChallengeStore[this.props.params.challengeId];
-
     this.setState({ codingChallenge });
   }
 
   render() {
     let codingChallenge = this.state.codingChallenge;
-
     return (
       <section id="coding-challenge">
         <h1>Coding Challenge</h1>
@@ -50,9 +48,7 @@ export default class CodingChallengePage extends React.Component {
           <p>{ codingChallenge.description }</p>
         </div>
 
-        <SolutionSubmission
-          codingChallenge={codingChallenge}
-          methodSignature={codingChallenge.methodSignature}/>
+        <SolutionSubmission codingChallenge={codingChallenge} />
       </section>
     );
   }
