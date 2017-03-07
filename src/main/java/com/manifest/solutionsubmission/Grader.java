@@ -1,6 +1,7 @@
 package com.manifest.solutionsubmission;
 
 import com.manifest.server.dataobjects.SolutionSubmission;
+import com.manifest.solutionsubmission.throwables.SolutionCompilationException;
 import com.manifest.solutionsubmission.throwables.TargetMethodMissingException;
 
 
@@ -17,22 +18,25 @@ public class Grader {
 	}
 	
 	public SolutionGrade grade(SolutionSubmission submission) {
+		SolutionGrade grade;
+		
 		try {
 			SolutionProxy solutionProxy = solutionProxyFactory.tryNewSolutionProxy(submission);
 			TestSuite testSuite = suiteRetreiver.getSuite(submission);
-			SolutionGrade solutionGrade = testRunner.runTests(testSuite, solutionProxy);
-			return solutionGrade;
+			grade = testRunner.runTests(testSuite, solutionProxy);
 			
 		} catch(ClassFormatError classFormatError) {
-			return SolutionGrade.failingGrade(classFormatError);
+			SolutionCompilationException compilationException = SolutionCompilationException.newException(classFormatError);
+			grade = SolutionGrade.failingGrade(compilationException);
 		} catch(NoSuchMethodException noSuchMethodException) {
 			TargetMethodMissingException targetMissingException = TargetMethodMissingException.newException(noSuchMethodException);
-			return SolutionGrade.failingGrade(targetMissingException);
+			grade = SolutionGrade.failingGrade(targetMissingException);
 		} catch (Throwable throwable) {
 			throwable.printStackTrace();
-			return null;
-			
+			grade = null;
 		}
+		
+		return grade;
 	}
 
 	public void setTestSuiteRetriever(TestSuiteRetriever suiteRetreiver) {
