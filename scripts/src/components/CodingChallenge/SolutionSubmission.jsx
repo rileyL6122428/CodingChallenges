@@ -37,7 +37,6 @@ export default class SolutionSubmission extends React.Component {
   }
 
   submitSolution(clickEvent) {
-    debugger
     clickEvent.preventDefault();
     solutionRequests.submitSolution({
       sourceCode: this.state.solution,
