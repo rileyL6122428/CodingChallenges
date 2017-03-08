@@ -2,6 +2,8 @@ import React from 'react';
 import solutionRequests from '../../backendApi/solutions.js';
 import SubmissionOutput from './SubmissionOutput.jsx';
 
+import SolutionUtils from '../../utils/SolutionUtils.js';
+
 import CodeMirror from 'react-codemirror';
 import '../../../../node_modules/codemirror/mode/clike/clike.js';
 import '../../../../node_modules/codemirror/addon/edit/matchbrackets.js';
@@ -12,42 +14,30 @@ export default class SolutionSubmission extends React.Component {
     super(props);
 
     this.state = {
-      code: this._defaultSolution() ,
-      editorOptions: {
-        mode: "text/x-java",
-        matchBrackets: true,
-        autoCloseBrackets: true,
-        lineNumbers: true
-      }
+      code: this._defaultSolution(),
+      editorOptions: SolutionUtils.editorOptions()
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setDefaultSolution(nextProps);
+    this._setDefaultSolution(nextProps);
   }
 
-  setDefaultSolution(nextProps) {
+  _setDefaultSolution(nextProps) {
     if(this.props.codingChallenge !== nextProps.codingChallenge)
       this.setState({ code: this._defaultSolution(nextProps) });
   }
 
   _defaultSolution(nextProps) {
     let methodSignature = nextProps? nextProps.codingChallenge.methodSignature : this.props.codingChallenge.methodSignature;
-
-    return (
-      "public class Solution { \n\n" +
-      "\tpublic " + methodSignature + "{ \n" +
-      "\t\t\n" +
-      "\t} \n\n" +
-      "}"
-    );
+    return SolutionUtils.defaultSolution(methodSignature);
   }
 
-  updateSolution(updatedCode) {
+  _updateSolution(updatedCode) {
     this.setState({ code: updatedCode });
   }
 
-  submitSolution(clickEvent) {
+  _submitSolution(clickEvent) {
     solutionRequests.submitSolution({
       sourceCode: this.state.code,
       challengeId: this.props.codingChallenge.id,
@@ -57,8 +47,8 @@ export default class SolutionSubmission extends React.Component {
   render() {
     return (
       <div id="solution-submission">
-        <CodeMirror onChange={this.updateSolution.bind(this)} value={this.state.code} options={this.state.editorOptions} />
-        <button onClick={this.submitSolution.bind(this)}>Submit</button>
+        <CodeMirror onChange={this._updateSolution.bind(this)} value={this.state.code} options={this.state.editorOptions} />
+        <button onClick={this._submitSolution.bind(this)}>Submit</button>
         <SubmissionOutput />
       </div>
     );
