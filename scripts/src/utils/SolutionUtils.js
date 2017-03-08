@@ -9,14 +9,6 @@ var SolutionUtils = {
     );
   },
 
-  editorOptions: () => {
-    return ({
-      mode: "text/x-java",
-      matchBrackets: true,
-      autoCloseBrackets: true,
-      lineNumbers: true
-    });
-  }
 }
 
 export default SolutionUtils;

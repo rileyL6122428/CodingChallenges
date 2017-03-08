@@ -1,13 +1,9 @@
 import React from 'react';
 import solutionRequests from '../../backendApi/solutions.js';
 import SubmissionOutput from './SubmissionOutput.jsx';
+import SolutionEditor from './SolutionEditor.jsx';
 
 import SolutionUtils from '../../utils/SolutionUtils.js';
-
-import CodeMirror from 'react-codemirror';
-import '../../../../node_modules/codemirror/mode/clike/clike.js';
-import '../../../../node_modules/codemirror/addon/edit/matchbrackets.js';
-import '../../../../node_modules/codemirror/addon/edit/closebrackets.js';
 
 export default class SolutionSubmission extends React.Component {
   constructor(props) {
@@ -47,10 +43,11 @@ export default class SolutionSubmission extends React.Component {
   render() {
     return (
       <div id="solution-submission">
-        <CodeMirror onChange={this._updateSolution.bind(this)} value={this.state.code} options={this.state.editorOptions} />
+        <SolutionEditor onChange={this._updateSolution.bind(this)} code={this.state.code}/>
         <button onClick={this._submitSolution.bind(this)}>Submit</button>
         <SubmissionOutput />
       </div>
     );
   }
 }
+// <CodeMirror onChange={this._updateSolution.bind(this)} value={this.state.code} options={this.state.editorOptions} />
