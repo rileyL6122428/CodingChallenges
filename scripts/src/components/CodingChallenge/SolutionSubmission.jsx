@@ -12,7 +12,7 @@ export default class SolutionSubmission extends React.Component {
     super(props);
 
     this.state = {
-      solution: "" ,
+      code: this._defaultSolution() ,
       editorOptions: {
         mode: "text/x-java",
         matchBrackets: true,
@@ -28,26 +28,28 @@ export default class SolutionSubmission extends React.Component {
 
   setDefaultSolution(nextProps) {
     if(this.props.codingChallenge !== nextProps.codingChallenge)
-      this.setState({ solution: this._defaultSolution(nextProps) });
+      this.setState({ code: this._defaultSolution(nextProps) });
   }
 
   _defaultSolution(nextProps) {
+    let methodSignature = nextProps? nextProps.codingChallenge.methodSignature : this.props.codingChallenge.methodSignature;
+
     return (
       "public class Solution { \n\n" +
-      "\tpublic " + nextProps.codingChallenge.methodSignature + "{ \n" +
+      "\tpublic " + methodSignature + "{ \n" +
       "\t\t\n" +
       "\t} \n\n" +
       "}"
     );
   }
 
-  updateSolution(updatedSourceCode) {
-    this.setState({ solution: updatedSourceCode });
+  updateSolution(updatedCode) {
+    this.setState({ code: updatedCode });
   }
 
   submitSolution(clickEvent) {
     solutionRequests.submitSolution({
-      sourceCode: this.state.solution,
+      sourceCode: this.state.code,
       challengeId: this.props.codingChallenge.id,
     });
   }
@@ -55,7 +57,7 @@ export default class SolutionSubmission extends React.Component {
   render() {
     return (
       <div id="solution-submission">
-        <CodeMirror onChange={this.updateSolution.bind(this)} value={this.state.solution} options={this.state.editorOptions} />
+        <CodeMirror onChange={this.updateSolution.bind(this)} value={this.state.code} options={this.state.editorOptions} />
         <button onClick={this.submitSolution.bind(this)}>Submit</button>
         <SubmissionOutput />
       </div>
