@@ -2,6 +2,11 @@ import React from 'react';
 import solutionRequests from '../../backendApi/solutions.js';
 import SubmissionOutput from './SubmissionOutput.jsx';
 
+import CodeMirror from 'react-codemirror';
+import '../../../../node_modules/codemirror/mode/clike/clike.js';
+import '../../../../node_modules/codemirror/addon/edit/matchbrackets.js';
+import '../../../../node_modules/codemirror/addon/edit/closebrackets.js';
+
 export default class SolutionSubmission extends React.Component {
   constructor(props) {
     super(props);
@@ -9,9 +14,12 @@ export default class SolutionSubmission extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(this.props.codingChallenge !== nextProps.codingChallenge) {
+    this.setDefaultSolution(nextProps);
+  }
+
+  setDefaultSolution(nextProps) {
+    if(this.props.codingChallenge !== nextProps.codingChallenge)
       this.setState({ solution: this._defaultSolution(nextProps) });
-    }
   }
 
   _defaultSolution(nextProps) {
@@ -24,12 +32,12 @@ export default class SolutionSubmission extends React.Component {
     );
   }
 
-  updateSolution(editEvent) {
-    let updatedSolution = editEvent.target.value;
-    this.setState({ solution: updatedSolution });
+  updateSolution(updatedSourceCode) {
+    this.setState({ solution: updatedSourceCode });
   }
 
   submitSolution(clickEvent) {
+    debugger
     clickEvent.preventDefault();
     solutionRequests.submitSolution({
       sourceCode: this.state.solution,
@@ -38,9 +46,18 @@ export default class SolutionSubmission extends React.Component {
   }
 
   render() {
+
+    let options = {
+      mode: "text/x-java",
+      matchBrackets: true,
+      autoCloseBrackets: true,
+      lineNumbers: true
+    };
+    // <textarea onChange={this.updateSolution.bind(this)} value={ this.state.solution } rows="10" cols="50" />
+
     return (
       <div id="solution-submission">
-        <textarea onChange={this.updateSolution.bind(this)} value={ this.state.solution } rows="10" cols="50" />
+        <CodeMirror onChange={this.updateSolution.bind(this)} value={this.state.solution} options={options} />
         <button onClick={this.submitSolution.bind(this)}>Submit</button>
         <SubmissionOutput />
       </div>
