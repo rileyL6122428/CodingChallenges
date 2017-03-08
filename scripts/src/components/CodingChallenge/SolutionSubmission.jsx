@@ -10,7 +10,17 @@ import '../../../../node_modules/codemirror/addon/edit/closebrackets.js';
 export default class SolutionSubmission extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { solution: "" , solutionPassed: "YET TO SUBMIT" };
+
+    this.state = {
+      solution: "" ,
+      solutionPassed: "YET TO SUBMIT",
+      editorOptions: {
+        mode: "text/x-java",
+        matchBrackets: true,
+        autoCloseBrackets: true,
+        lineNumbers: true
+      }
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,7 +47,6 @@ export default class SolutionSubmission extends React.Component {
   }
 
   submitSolution(clickEvent) {
-    clickEvent.preventDefault();
     solutionRequests.submitSolution({
       sourceCode: this.state.solution,
       challengeId: this.props.codingChallenge.id,
@@ -45,18 +54,9 @@ export default class SolutionSubmission extends React.Component {
   }
 
   render() {
-
-    let options = {
-      mode: "text/x-java",
-      matchBrackets: true,
-      autoCloseBrackets: true,
-      lineNumbers: true
-    };
-    // <textarea onChange={this.updateSolution.bind(this)} value={ this.state.solution } rows="10" cols="50" />
-
     return (
       <div id="solution-submission">
-        <CodeMirror onChange={this.updateSolution.bind(this)} value={this.state.solution} options={options} />
+        <CodeMirror onChange={this.updateSolution.bind(this)} value={this.state.solution} options={this.state.editorOptions} />
         <button onClick={this.submitSolution.bind(this)}>Submit</button>
         <SubmissionOutput />
       </div>
