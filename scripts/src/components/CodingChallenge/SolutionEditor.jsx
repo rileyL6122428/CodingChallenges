@@ -21,10 +21,8 @@ export default class SolutionEditor extends React.Component {
   }
 
   render() {
-    return (
-        <CodeMirror onChange={this.props.updateSolution}
-                    value={this.props.code}
-                    options={this.state.editorOptions} />
-    );
+    return (<CodeMirror onChange={this.props.updateSolution}
+                        value={this.props.code}
+                        options={this.state.editorOptions} />);
   }
 }

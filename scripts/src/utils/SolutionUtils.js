@@ -1,8 +1,9 @@
 var SolutionUtils = {
-  defaultSolution: (methodSignature) => {
+
+  defaultSolution: (codingChallenge) => {
     return (
       "public class Solution { \n\n" +
-      "\tpublic " + methodSignature + "{ \n" +
+      "\tpublic " + codingChallenge.methodSignature + "{ \n" +
       "\t\t\n" +
       "\t} \n\n" +
       "}"
