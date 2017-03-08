@@ -13,7 +13,6 @@ export default class SolutionSubmission extends React.Component {
 
     this.state = {
       solution: "" ,
-      solutionPassed: "YET TO SUBMIT",
       editorOptions: {
         mode: "text/x-java",
         matchBrackets: true,
