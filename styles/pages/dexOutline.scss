@@ -1,0 +1,25 @@
+.dex-container {
+  height: 45px;
+
+  .body {
+    height: 42px;
+    background-color: rgba(202, 78, 66, 1);
+  }
+
+  .border {
+    height: 3px;
+    background-color: rgba(75, 75, 75, 1);
+  }
+}
+
+#dex-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+div#content {
+  position: relative;
+  min-height: 475px;
+  background-color: rgb(230, 245, 255);
+}

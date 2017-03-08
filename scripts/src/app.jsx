@@ -5,6 +5,8 @@ import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router'
 import Navbar from './components/Navbar/_Navbar.jsx';
 import CodingChallengeIndexPage from './components/CodingChallengeIndex/_CodingChallengeIndexPage.jsx';
 import CodingChallengePage from './components/CodingChallenge/_CodingChallengePage.jsx';
+import DexTop from './components/DexBorder/DexTop.jsx';
+import DexBottom from './components/DexBorder/DexBottom.jsx';
 
 class App extends React.Component {
   constructor(props) { super(props); }
@@ -12,8 +14,10 @@ class App extends React.Component {
     //TODO, NEED TO REFACTOR THE routes[0] BELOW
     return (
       <div>
+        <DexTop />
         <Navbar routes={ this.props.routes[0].childRoutes } />
         { this.props.children }
+        <DexBottom />
       </div>
     );
   }
