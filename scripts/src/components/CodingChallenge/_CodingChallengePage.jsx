@@ -42,13 +42,31 @@ export default class CodingChallengePage extends React.Component {
     return (
       <section id="coding-challenge">
         <div id="coding-challenge-info">
-          <div class="into-images">
-            <img src="/images/Three.svg" />
+          <div id="info-images">
+            <img id="monster-image" src="/images/Three.svg" />
           </div>
 
-          <div class="into-text">
-            <h2>{ codingChallenge.name }</h2>
-            <p>{ codingChallenge.description }</p>
+          <div id="info-text">
+            <h2>FiggBuzz</h2>
+            <ul id="monster-attributes">
+              <li>
+                <span className="attribute-type">Type:</span>
+                <span className="attribute-value">Grass</span>
+              </li>
+              <li>
+                <span className="attribute-type">Weaknesses:</span>
+                <ul className="attribute-values">
+                  <li>Conditionals</li>
+                  <li>Modulo Aritmethic</li>
+                </ul>
+              </li>
+              <li>
+                <p>
+                  <span className="attribute-type">Description:</span>
+                  <span className="attribute-value">Insert FiggBuzz Description</span>
+                </p>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -57,3 +75,5 @@ export default class CodingChallengePage extends React.Component {
     );
   }
 }
+// <h2>{ codingChallenge.name }</h2>
+// <p>{ codingChallenge.description }</p>

@@ -1,0 +1,16 @@
+section#coding-challenge {
+
+  div#coding-challenge-info {
+    display: flex;
+    margin: auto;
+    width: 1000px;
+  }
+
+  div#info-image, img#monster-image {
+    width: 350px;
+  }
+
+  div#info-text {
+    width: 650px;
+  }
+}
