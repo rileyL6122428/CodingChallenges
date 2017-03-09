@@ -49,22 +49,20 @@ export default class CodingChallengePage extends React.Component {
           <div id="info-text">
             <h2>FiggBuzz</h2>
             <ul id="monster-attributes">
-              <li>
-                <span className="attribute-type">Type:</span>
+              <li className="attribute">
+                <span className="attribute-type">ELEMENT TYPE: </span>
                 <span className="attribute-value">Grass</span>
               </li>
-              <li>
-                <span className="attribute-type">Weaknesses:</span>
+              <li className="attribute">
+                <span className="attribute-type">WEAKNESSES  :</span>
                 <ul className="attribute-values">
                   <li>Conditionals</li>
                   <li>Modulo Aritmethic</li>
                 </ul>
               </li>
-              <li>
-                <p>
-                  <span className="attribute-type">Description:</span>
-                  <span className="attribute-value">Insert FiggBuzz Description</span>
-                </p>
+              <li className="attribute">
+                <span className="attribute-type">DESCRIPTION  :</span>
+                <span className="attribute-value">Insert FiggBuzz Description</span>
               </li>
             </ul>
           </div>

@@ -2,8 +2,13 @@ section#coding-challenge {
 
   div#coding-challenge-info {
     display: flex;
+    width: 950px;
+
+    border-radius: 5px;
     margin: auto;
-    width: 1000px;
+
+    background-color: #8ad6ef;
+    color: white;
   }
 
   div#info-image, img#monster-image {
@@ -11,8 +16,39 @@ section#coding-challenge {
   }
 
   div#info-text {
-    width: 650px;
+    width: 600px;
+    padding-top: 25px;
   }
 
-  
+  h2 {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  li.attribute {
+    display: flex;
+    margin-top: 10px;
+  }
+
+  .attribute-type, .attribute-value, .attribute-values {
+    font-size: 20px;
+  }
+
+  .attribute-type {
+    font-weight: bold;
+  }
+
+  .attribute-value, .attribute-values {
+    margin-left: 10px;
+  }
+
+  ul.attribute-values {
+    padding-left: 35px;
+    margin-left: 0;
+  }
+
+  ul.attribute-values > li {
+    display: list-item;
+    list-style: initial;
+  }
 }
