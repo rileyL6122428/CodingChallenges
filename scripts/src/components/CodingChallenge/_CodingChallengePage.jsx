@@ -41,11 +41,15 @@ export default class CodingChallengePage extends React.Component {
     let codingChallenge = this.state.codingChallenge;
     return (
       <section id="coding-challenge">
-        <h1>Coding Challenge</h1>
-
         <div id="coding-challenge-info">
-          <h2>{ codingChallenge.name }</h2>
-          <p>{ codingChallenge.description }</p>
+          <div class="into-images">
+            <img src="/images/Three.svg" />
+          </div>
+
+          <div class="into-text">
+            <h2>{ codingChallenge.name }</h2>
+            <p>{ codingChallenge.description }</p>
+          </div>
         </div>
 
         <SolutionSubmission codingChallenge={codingChallenge} />
