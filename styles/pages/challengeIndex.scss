@@ -1,6 +1,12 @@
 section#coding-challenges {
   width: 990px;
+  min-height: 285px;
+  padding: 15px 0 50px;
   margin: auto;
+  border-radius: 3px;
+  // background-color: #ace4f6;
+  background-color: #8ad6ef;
+  color: white;
 
   h1 {
     text-align: center;
@@ -25,7 +31,7 @@ section#coding-challenges {
 
   input[type="checkbox"] + label {
     display: flex;
-    font-size: 30px;
+    font-size: 27px;
     opacity: 0.5;
   }
 
@@ -48,9 +54,14 @@ section#coding-challenges {
   }
 
   li.coding-challenge > a {
+    width: 90%;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+
+    padding: 10px;
+    margin: auto;
+    border-radius: 5px;
+
     text-decoration: none;
 
     &:hover {
@@ -58,15 +69,16 @@ section#coding-challenges {
     }
   }
 
-  li.coding-challenge div {
-    color: black;
+  div.challenge-info {
+    color: white;
+    font-size: 20px;
   }
 
-  li.coding-challenge div.challenge-difficulty {
+  div.challenge-difficulty {
     width: 65px;
   }
 
-  li.coding-challenge div.challenge-name {
+  div.challenge-name {
     width: 200px;
   }
 }
