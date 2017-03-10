@@ -24,7 +24,7 @@ function formattedCodingChallenge(codingChallenge) {
     difficulty: codingChallenge.difficulty,
     imageUrl: codingChallenge.imageUrl,
     methodSignature: codingChallenge.methodSignature,
-    hintIds: codingChallenge.hints.map((hint) => { return hint.id })
+    hintIds: StorageFormats.idList(codingChallenge.hints)
   };
 }
 

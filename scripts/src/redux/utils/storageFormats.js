@@ -7,6 +7,10 @@ let StorageFormats = {
     });
 
     return idMap;
+  },
+
+  idList: (entityList) => {
+    return entityList.map((entity) => { return entity.id; });
   }
 };
 
