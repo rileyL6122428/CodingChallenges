@@ -73,5 +73,3 @@ export default class CodingChallengePage extends React.Component {
     );
   }
 }
-// <h2>{ codingChallenge.name }</h2>
-// <p>{ codingChallenge.description }</p>
