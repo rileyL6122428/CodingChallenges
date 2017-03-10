@@ -1,15 +1,11 @@
+import StorageFormats from '../utils/storageFormats.js';
 import { CODING_CHALLENGES } from '../constants/codingChallenges.js';
 
 function addChallenges(challengesList) {
-  let payload = {};
-
-  challengesList.forEach((challenge) => {
-    payload[challenge.id] = formattedCodingChallenge(challenge);
-  });
-
-  let type = CODING_CHALLENGES.ADD_CHALLENGES
-
-  return { payload, type };
+  return {
+    payload: StorageFormats.idMap(challengesList, formattedCodingChallenge),
+    type: CODING_CHALLENGES.ADD_CHALLENGES
+  };
 }
 
 function addChallenge(challenge) {
