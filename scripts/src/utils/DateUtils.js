@@ -1,7 +1,7 @@
 var DateUtils = {
   monthDayYear: (integerTime) => {
     let date = new Date(integerTime);
-    return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+    return (date.getUTCMonth() + 1) + "/" + date.getUTCDate() + "/" + date.getUTCFullYear();
   }
 };
 
