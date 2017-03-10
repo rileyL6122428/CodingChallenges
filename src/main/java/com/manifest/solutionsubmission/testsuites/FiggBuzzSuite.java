@@ -3,9 +3,9 @@ package com.manifest.solutionsubmission.testsuites;
 import com.manifest.solutionsubmission.SolutionTest;
 import com.manifest.solutionsubmission.TestSuite;
 
-public class FizzBuzzSuite extends TestSuite {
+public class FiggBuzzSuite extends TestSuite {
 
-	public FizzBuzzSuite() {
+	public FiggBuzzSuite() {
 		super("fizzbuzz");
 	}
 	

@@ -5,10 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.manifest.server.dataobjects.SolutionSubmission;
-import com.manifest.solutionsubmission.testsuites.CharacterCountSuite;
-import com.manifest.solutionsubmission.testsuites.ConcatStringsSuite;
-import com.manifest.solutionsubmission.testsuites.FizzBuzzSuite;
-import com.manifest.solutionsubmission.testsuites.ReverseStringSuite;
+import com.manifest.solutionsubmission.testsuites.FiggBuzzSuite;
 
 public class TestSuiteRetriever {
 	
@@ -18,10 +15,7 @@ public class TestSuiteRetriever {
 		testSuites = new HashMap<String, TestSuite>();
 		
 		Arrays.asList(
-			new FizzBuzzSuite(),
-			new CharacterCountSuite(),
-			new ConcatStringsSuite(),
-			new ReverseStringSuite()
+			new FiggBuzzSuite()
 		).stream().forEach(this::addSuite);
 	}
 	

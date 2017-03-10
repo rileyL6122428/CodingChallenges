@@ -34,15 +34,20 @@ public class CodingChallenge {
 	private String name; 
 	private String difficulty;
 	private String methodSignature;
+	private String imageUrl;
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(joinColumns = @JoinColumn(name = "challenge_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "parameter_type_id", referencedColumnName = "id"))
+	@JoinTable(name="coding_challenge_parameter_types_join", joinColumns = @JoinColumn(name = "challenge_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "parameter_type_id", referencedColumnName = "id"))
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private List<ParameterType> parameterTypes;
 	
 	@OneToMany(mappedBy = "codingChallenge", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private List<Solution> solutions;
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name="coding_challenge_hints_join", joinColumns = @JoinColumn(name = "challenge_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "hint_id", referencedColumnName = "id"))
+	private List<ChallengeHint> hints;
 	
 	@CreatedDate
 	private Date dateCreated;
@@ -109,5 +114,13 @@ public class CodingChallenge {
 
 	public void setParameterTypes(List<ParameterType> parameterTypes) {
 		this.parameterTypes = parameterTypes;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 }
