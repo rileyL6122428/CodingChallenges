@@ -47,6 +47,7 @@ public class CodingChallenge {
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name="coding_challenge_hints_join", joinColumns = @JoinColumn(name = "challenge_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "hint_id", referencedColumnName = "id"))
+	@JsonProperty
 	private List<ChallengeHint> hints;
 	
 	@CreatedDate
