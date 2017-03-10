@@ -1,4 +1,4 @@
-import StorageFormats from '../utils/storageFormats.js';
+import StorageFormats from '../../utils/storageFormats.js';
 import { HINTS } from '../constants/hints.js';
 
 function addHints(hintsList) {

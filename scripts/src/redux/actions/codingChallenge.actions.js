@@ -1,4 +1,4 @@
-import StorageFormats from '../utils/storageFormats.js';
+import StorageFormats from '../../utils/storageFormats.js';
 import { CODING_CHALLENGES } from '../constants/codingChallenges.js';
 
 function addChallenges(challengesList) {
