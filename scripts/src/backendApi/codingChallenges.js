@@ -7,7 +7,9 @@ export default {
     $.ajax({
       url: "/api/coding-challenges",
       type: "GET",
-      success: (response) => Store.dispatch(addChallenges(response)),
+      success: (codingChallenges) => {
+        Store.dispatch(addChallenges(codingChallenges));
+      }
     });
   },
 
