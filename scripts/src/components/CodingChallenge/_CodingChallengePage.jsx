@@ -43,7 +43,7 @@ export default class CodingChallengePage extends React.Component {
       <section id="coding-challenge">
         <div id="coding-challenge-info">
           <div id="info-images">
-            <img id="monster-image" src="/images/Three.svg" />
+            <img id="monster-image" src="/images/monsters/Three.svg" />
           </div>
 
           <div id="info-text">
