@@ -1,8 +1,7 @@
 import RelationFlattener from '../../src/utils/relationFlattener.js';
 
 describe("RelationFlattener", () => {
-  describe("#flattenAsMap", () => {
-
+  describe("#flatList", () => {
     it("produces a list of unique objects based on a relation when duplicate related objects exist", () => {
       let relatedObj1 = { name: "RELATED_OBJ_1", id: 1};
       let relatedObj2 = { name: "RELATED_OBJ_2", id: 2 };
