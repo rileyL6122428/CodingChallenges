@@ -1,16 +1,16 @@
 import StorageFormats from './storageFormats.js';
 
 let RelationFlattener = {
-  flatten: (entityList, relationName) => {
+  flatList(entityList, relationName) {
     let flattenedRelation = {};
 
     entityList.forEach((entity) => {
       let relatedEntities = entity[relationName];
-      Object.assign(flattenedRelation, StorageFormats.idMap(relatedEntities);
+      Object.assign(flattenedRelation, StorageFormats.idMap(relatedEntities));
     });
 
-    return flattenedRelation;
+    return Object.values(flattenedRelation);
   }
 };
 
-export RelationFlattener;
+export default RelationFlattener;

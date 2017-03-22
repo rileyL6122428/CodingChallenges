@@ -22,6 +22,7 @@ public class Grader {
 		
 		try {
 			grade = tryTestSolution(submission);
+			
 		} catch(ClassFormatError classFormatError) {
 			grade = failingGrade(classFormatError);
 		} catch(NoSuchMethodException noSuchMethodException) {
