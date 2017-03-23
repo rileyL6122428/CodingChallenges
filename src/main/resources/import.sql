@@ -13,7 +13,7 @@ INSERT INTO coding_challenge_parameter_types_join (challenge_id, parameter_type_
 
 
 INSERT INTO coding_challenge (id, date_created, name, difficulty, description, method_signature, image_url) VALUES (2, '2001-01-02', 'splashindrome', 'easy', 'Attacks with strings. If the supplied String is a palindrome, return true. Else, return false.', 'boolean splashindrome(String str)', 'Profajelly2.svg')
-INSERT INTO coding_challenge_parameter_types_join (challenge_id, parameter_type_id) VALUES (2, 4)
+INSERT INTO coding_challenge_parameter_types_join (challenge_id, parameter_type_id) VALUES (2, 3)
 
 
 

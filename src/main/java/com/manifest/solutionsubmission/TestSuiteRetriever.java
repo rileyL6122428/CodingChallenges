@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.manifest.server.dataobjects.SolutionSubmission;
 import com.manifest.solutionsubmission.testsuites.FiggBuzzSuite;
+import com.manifest.solutionsubmission.testsuites.SplashindromeSuite;
 
 public class TestSuiteRetriever {
 	
@@ -15,7 +16,8 @@ public class TestSuiteRetriever {
 		testSuites = new HashMap<String, TestSuite>();
 		
 		Arrays.asList(
-			new FiggBuzzSuite()
+			new FiggBuzzSuite(),
+			new SplashindromeSuite()
 		).stream().forEach(this::addSuite);
 	}
 	
