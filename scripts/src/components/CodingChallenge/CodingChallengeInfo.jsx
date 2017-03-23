@@ -15,7 +15,7 @@ export default class CodingChallengeInfo extends React.Component {
 
   render() {
     let codingChallenge = this.props.codingChallenge;
-    
+
     return (
         <div id="coding-challenge-info">
 
@@ -37,4 +37,3 @@ export default class CodingChallengeInfo extends React.Component {
     );
   }
 }
-// <span className="attribute-type">DESCRIPTION:</span>
