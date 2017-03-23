@@ -28,16 +28,6 @@ export default class CodingChallengeInfo extends React.Component {
 
             <ul id="monster-attributes">
               <li className="attribute">
-                <span className="attribute-type">WEAKNESSES:</span>
-                <ul className="attribute-values">
-
-                  <li>Conditionals</li>
-                  <li>Modulo Aritmethic</li>
-                </ul>
-              </li>
-
-              <li className="attribute">
-                <span className="attribute-type">DESCRIPTION:</span>
                 <span className="attribute-value">{codingChallenge.description}</span>
               </li>
             </ul>
@@ -47,3 +37,4 @@ export default class CodingChallengeInfo extends React.Component {
     );
   }
 }
+// <span className="attribute-type">DESCRIPTION:</span>

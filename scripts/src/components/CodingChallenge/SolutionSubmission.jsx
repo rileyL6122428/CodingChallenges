@@ -31,12 +31,16 @@ export default class SolutionSubmission extends React.Component {
   render() {
     return (
       <div id="solution-submission">
-        <SolutionEditor updateSolution={(code) => this.setState({code})}
-                        codingChallenge={this.props.codingChallenge}
-                        code={this.state.code} />
+        <div id="editor-container">
+          <SolutionEditor updateSolution={(code) => this.setState({code})}
+            codingChallenge={this.props.codingChallenge}
+            code={this.state.code} />
+        </div>
 
-        <button onClick={this._submitSolution.bind(this)}>Submit</button>
-        <SubmissionOutput />
+        <div id="solution-output-and-submit">
+          <SubmissionOutput />
+          <button id="submit-solution" onClick={this._submitSolution.bind(this)}>Submit</button>
+        </div>
       </div>
     );
   }

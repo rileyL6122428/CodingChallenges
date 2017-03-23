@@ -6,7 +6,7 @@ import com.manifest.solutionsubmission.TestSuite;
 public class FiggBuzzSuite extends TestSuite {
 
 	public FiggBuzzSuite() {
-		super("fizzbuzz");
+		super("figgbuzz");
 	}
 	
 	{

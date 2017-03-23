@@ -1,4 +1,5 @@
 section#coding-challenge {
+  margin-top: 35px;
 
   div#coding-challenge-info {
     display: flex;
@@ -50,5 +51,57 @@ section#coding-challenge {
   ul.attribute-values > li {
     display: list-item;
     list-style: initial;
+  }
+
+  div#editor-container {
+    width: 80%;
+    padding: 50px 75px;
+    margin: 50px auto 0;
+    background-color: #8ad6ef;
+    border-radius: 7px;
+  }
+
+  div.ReactCodeMirror {
+    width: 85%;
+    margin: auto;
+  }
+
+  div.CodeMirror.cm-s-default {
+    border-radius: 8px;
+  }
+
+  div#solution-output-and-submit {
+
+    margin-top: 35px;
+
+    &:after {
+      content: "";
+      clear: both;
+      display: block;
+    }
+  }
+
+  div#submission-output {
+    float: left;
+    width: 42%;
+    padding: 10px;
+    margin-left: 5%;
+    background-color: #8ad6ef;
+
+    > p {
+      background-color: rgba(255, 255, 255, .05);
+      padding: 10px;
+      color: white;
+    }
+  }
+
+  button#submit-solution {
+    font-size: 25px;
+    float: right;
+    margin-right: 21.5%;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
