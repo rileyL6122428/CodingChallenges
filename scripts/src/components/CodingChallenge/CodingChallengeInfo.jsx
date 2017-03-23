@@ -15,12 +15,12 @@ export default class CodingChallengeInfo extends React.Component {
 
   render() {
     let codingChallenge = this.props.codingChallenge;
-
+    
     return (
         <div id="coding-challenge-info">
 
           <div id="info-images">
-            <img id="monster-image" src="/images/monsters/Three.svg" />
+            <img id="monster-image" src={"/images/monsters/" + codingChallenge.imageUrl} />
           </div>
 
           <div id="info-text">
